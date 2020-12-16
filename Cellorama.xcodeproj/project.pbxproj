@@ -1,0 +1,598 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */; };
+		97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */; };
+		97EE80E5258AAF6500C6FE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E4258AAF6500C6FE52 /* ViewController.swift */; };
+		97EE80E8258AAF6500C6FE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80E6258AAF6500C6FE52 /* Main.storyboard */; };
+		97EE80EA258AAF6600C6FE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80E9258AAF6600C6FE52 /* Assets.xcassets */; };
+		97EE80ED258AAF6600C6FE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80EB258AAF6600C6FE52 /* LaunchScreen.storyboard */; };
+		97EE80F8258AAF6600C6FE52 /* CelloramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80F7258AAF6600C6FE52 /* CelloramaTests.swift */; };
+		97EE8103258AAF6600C6FE52 /* CelloramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE8102258AAF6600C6FE52 /* CelloramaUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		97EE80F4258AAF6600C6FE52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97EE80D5258AAF6400C6FE52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97EE80DC258AAF6400C6FE52;
+			remoteInfo = Cellorama;
+		};
+		97EE80FF258AAF6600C6FE52 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97EE80D5258AAF6400C6FE52 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 97EE80DC258AAF6400C6FE52;
+			remoteInfo = Cellorama;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		97EE80DD258AAF6500C6FE52 /* Cellorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		97EE80E4258AAF6500C6FE52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97EE80E7258AAF6500C6FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		97EE80E9258AAF6600C6FE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97EE80EC258AAF6600C6FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		97EE80EE258AAF6600C6FE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97EE80F3258AAF6600C6FE52 /* CelloramaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelloramaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EE80F7258AAF6600C6FE52 /* CelloramaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelloramaTests.swift; sourceTree = "<group>"; };
+		97EE80F9258AAF6600C6FE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97EE80FE258AAF6600C6FE52 /* CelloramaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelloramaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		97EE8102258AAF6600C6FE52 /* CelloramaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelloramaUITests.swift; sourceTree = "<group>"; };
+		97EE8104258AAF6600C6FE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		97EE80DA258AAF6400C6FE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80F0258AAF6600C6FE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80FB258AAF6600C6FE52 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		97EE80D4258AAF6400C6FE52 = {
+			isa = PBXGroup;
+			children = (
+				97EE80DF258AAF6500C6FE52 /* Cellorama */,
+				97EE80F6258AAF6600C6FE52 /* CelloramaTests */,
+				97EE8101258AAF6600C6FE52 /* CelloramaUITests */,
+				97EE80DE258AAF6500C6FE52 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		97EE80DE258AAF6500C6FE52 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				97EE80DD258AAF6500C6FE52 /* Cellorama.app */,
+				97EE80F3258AAF6600C6FE52 /* CelloramaTests.xctest */,
+				97EE80FE258AAF6600C6FE52 /* CelloramaUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		97EE80DF258AAF6500C6FE52 /* Cellorama */ = {
+			isa = PBXGroup;
+			children = (
+				97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */,
+				97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */,
+				97EE80E4258AAF6500C6FE52 /* ViewController.swift */,
+				97EE80E6258AAF6500C6FE52 /* Main.storyboard */,
+				97EE80E9258AAF6600C6FE52 /* Assets.xcassets */,
+				97EE80EB258AAF6600C6FE52 /* LaunchScreen.storyboard */,
+				97EE80EE258AAF6600C6FE52 /* Info.plist */,
+			);
+			path = Cellorama;
+			sourceTree = "<group>";
+		};
+		97EE80F6258AAF6600C6FE52 /* CelloramaTests */ = {
+			isa = PBXGroup;
+			children = (
+				97EE80F7258AAF6600C6FE52 /* CelloramaTests.swift */,
+				97EE80F9258AAF6600C6FE52 /* Info.plist */,
+			);
+			path = CelloramaTests;
+			sourceTree = "<group>";
+		};
+		97EE8101258AAF6600C6FE52 /* CelloramaUITests */ = {
+			isa = PBXGroup;
+			children = (
+				97EE8102258AAF6600C6FE52 /* CelloramaUITests.swift */,
+				97EE8104258AAF6600C6FE52 /* Info.plist */,
+			);
+			path = CelloramaUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		97EE80DC258AAF6400C6FE52 /* Cellorama */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97EE8107258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "Cellorama" */;
+			buildPhases = (
+				97EE80D9258AAF6400C6FE52 /* Sources */,
+				97EE80DA258AAF6400C6FE52 /* Frameworks */,
+				97EE80DB258AAF6400C6FE52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Cellorama;
+			productName = Cellorama;
+			productReference = 97EE80DD258AAF6500C6FE52 /* Cellorama.app */;
+			productType = "com.apple.product-type.application";
+		};
+		97EE80F2258AAF6600C6FE52 /* CelloramaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97EE810A258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaTests" */;
+			buildPhases = (
+				97EE80EF258AAF6600C6FE52 /* Sources */,
+				97EE80F0258AAF6600C6FE52 /* Frameworks */,
+				97EE80F1258AAF6600C6FE52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97EE80F5258AAF6600C6FE52 /* PBXTargetDependency */,
+			);
+			name = CelloramaTests;
+			productName = CelloramaTests;
+			productReference = 97EE80F3258AAF6600C6FE52 /* CelloramaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		97EE80FD258AAF6600C6FE52 /* CelloramaUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 97EE810D258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaUITests" */;
+			buildPhases = (
+				97EE80FA258AAF6600C6FE52 /* Sources */,
+				97EE80FB258AAF6600C6FE52 /* Frameworks */,
+				97EE80FC258AAF6600C6FE52 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				97EE8100258AAF6600C6FE52 /* PBXTargetDependency */,
+			);
+			name = CelloramaUITests;
+			productName = CelloramaUITests;
+			productReference = 97EE80FE258AAF6600C6FE52 /* CelloramaUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		97EE80D5258AAF6400C6FE52 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1220;
+				LastUpgradeCheck = 1220;
+				TargetAttributes = {
+					97EE80DC258AAF6400C6FE52 = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					97EE80F2258AAF6600C6FE52 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 97EE80DC258AAF6400C6FE52;
+					};
+					97EE80FD258AAF6600C6FE52 = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 97EE80DC258AAF6400C6FE52;
+					};
+				};
+			};
+			buildConfigurationList = 97EE80D8258AAF6400C6FE52 /* Build configuration list for PBXProject "Cellorama" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 97EE80D4258AAF6400C6FE52;
+			productRefGroup = 97EE80DE258AAF6500C6FE52 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				97EE80DC258AAF6400C6FE52 /* Cellorama */,
+				97EE80F2258AAF6600C6FE52 /* CelloramaTests */,
+				97EE80FD258AAF6600C6FE52 /* CelloramaUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		97EE80DB258AAF6400C6FE52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97EE80ED258AAF6600C6FE52 /* LaunchScreen.storyboard in Resources */,
+				97EE80EA258AAF6600C6FE52 /* Assets.xcassets in Resources */,
+				97EE80E8258AAF6500C6FE52 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80F1258AAF6600C6FE52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80FC258AAF6600C6FE52 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		97EE80D9258AAF6400C6FE52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97EE80E5258AAF6500C6FE52 /* ViewController.swift in Sources */,
+				97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */,
+				97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80EF258AAF6600C6FE52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97EE80F8258AAF6600C6FE52 /* CelloramaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		97EE80FA258AAF6600C6FE52 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97EE8103258AAF6600C6FE52 /* CelloramaUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		97EE80F5258AAF6600C6FE52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97EE80DC258AAF6400C6FE52 /* Cellorama */;
+			targetProxy = 97EE80F4258AAF6600C6FE52 /* PBXContainerItemProxy */;
+		};
+		97EE8100258AAF6600C6FE52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 97EE80DC258AAF6400C6FE52 /* Cellorama */;
+			targetProxy = 97EE80FF258AAF6600C6FE52 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		97EE80E6258AAF6500C6FE52 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97EE80E7258AAF6500C6FE52 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		97EE80EB258AAF6600C6FE52 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				97EE80EC258AAF6600C6FE52 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		97EE8105258AAF6600C6FE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		97EE8106258AAF6600C6FE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		97EE8108258AAF6600C6FE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = Cellorama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.Cellorama;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		97EE8109258AAF6600C6FE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = Cellorama/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.Cellorama;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		97EE810B258AAF6600C6FE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = CelloramaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.CelloramaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cellorama.app/Cellorama";
+			};
+			name = Debug;
+		};
+		97EE810C258AAF6600C6FE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = CelloramaTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.CelloramaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cellorama.app/Cellorama";
+			};
+			name = Release;
+		};
+		97EE810E258AAF6600C6FE52 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = CelloramaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.CelloramaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cellorama;
+			};
+			name = Debug;
+		};
+		97EE810F258AAF6600C6FE52 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 4R9X547BA9;
+				INFOPLIST_FILE = CelloramaUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.pokanop.CelloramaUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Cellorama;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		97EE80D8258AAF6400C6FE52 /* Build configuration list for PBXProject "Cellorama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97EE8105258AAF6600C6FE52 /* Debug */,
+				97EE8106258AAF6600C6FE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97EE8107258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "Cellorama" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97EE8108258AAF6600C6FE52 /* Debug */,
+				97EE8109258AAF6600C6FE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97EE810A258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97EE810B258AAF6600C6FE52 /* Debug */,
+				97EE810C258AAF6600C6FE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		97EE810D258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				97EE810E258AAF6600C6FE52 /* Debug */,
+				97EE810F258AAF6600C6FE52 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 97EE80D5258AAF6400C6FE52 /* Project object */;
+}
