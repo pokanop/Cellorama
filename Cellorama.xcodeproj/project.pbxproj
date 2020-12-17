@@ -3,18 +3,31 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		97359F6A258B2F5000452290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97359F69258B2F5000452290 /* ViewController.swift */; };
+		974FC0EB258ABB5A00513807 /* CollectionDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EA258ABB5A00513807 /* CollectionDataSource.swift */; };
+		974FC0F0258ABCB300513807 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EF258ABCB300513807 /* Item.swift */; };
+		974FC0F5258ABD4E00513807 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0F4258ABD4E00513807 /* CollectionCell.swift */; };
+		974FC0FA258ABF8100513807 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0F9258ABF8100513807 /* TableCell.swift */; };
+		974FC103258AC16200513807 /* TableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC102258AC16200513807 /* TableDataSource.swift */; };
+		97820187258AD962005D73A1 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97820186258AD962005D73A1 /* Reusable.swift */; };
+		97C9F512258AB1B80031C862 /* TableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9F511258AB1B80031C862 /* TableView.swift */; };
+		97C9F517258AB3DF0031C862 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9F516258AB3DF0031C862 /* View.swift */; };
 		97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */; };
 		97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */; };
-		97EE80E5258AAF6500C6FE52 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E4258AAF6500C6FE52 /* ViewController.swift */; };
+		97EE80E5258AAF6500C6FE52 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E4258AAF6500C6FE52 /* MainViewController.swift */; };
 		97EE80E8258AAF6500C6FE52 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80E6258AAF6500C6FE52 /* Main.storyboard */; };
 		97EE80EA258AAF6600C6FE52 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80E9258AAF6600C6FE52 /* Assets.xcassets */; };
 		97EE80ED258AAF6600C6FE52 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97EE80EB258AAF6600C6FE52 /* LaunchScreen.storyboard */; };
 		97EE80F8258AAF6600C6FE52 /* CelloramaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80F7258AAF6600C6FE52 /* CelloramaTests.swift */; };
 		97EE8103258AAF6600C6FE52 /* CelloramaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE8102258AAF6600C6FE52 /* CelloramaUITests.swift */; };
+		97EE8114258AB08100C6FE52 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE8113258AB08100C6FE52 /* CollectionView.swift */; };
+		AA370E4A537BB2086086091D /* Pods_Cellorama_CelloramaUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3408D8BE018F337B64DB709 /* Pods_Cellorama_CelloramaUITests.framework */; };
+		B998013F5C843F6D8228D389 /* Pods_CelloramaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E00B8F10F5D044F824C278B /* Pods_CelloramaTests.framework */; };
+		E237B5A854A64F9B3E67628E /* Pods_Cellorama.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93078C692283326CE98C5723 /* Pods_Cellorama.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,10 +48,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E00B8F10F5D044F824C278B /* Pods_CelloramaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CelloramaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B20E5F5810D666BBE6BFE97 /* Pods-Cellorama-CelloramaUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama-CelloramaUITests.debug.xcconfig"; path = "Target Support Files/Pods-Cellorama-CelloramaUITests/Pods-Cellorama-CelloramaUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		421AD5DA7587B11E6058ED79 /* Pods-Cellorama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama.debug.xcconfig"; path = "Target Support Files/Pods-Cellorama/Pods-Cellorama.debug.xcconfig"; sourceTree = "<group>"; };
+		65B1CF9FC6B7384A6292E1C7 /* Pods-CelloramaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelloramaTests.release.xcconfig"; path = "Target Support Files/Pods-CelloramaTests/Pods-CelloramaTests.release.xcconfig"; sourceTree = "<group>"; };
+		93078C692283326CE98C5723 /* Pods_Cellorama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cellorama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		97359F69258B2F5000452290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		974FC0EA258ABB5A00513807 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
+		974FC0EF258ABCB300513807 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		974FC0F4258ABD4E00513807 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		974FC0F9258ABF8100513807 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		974FC102258AC16200513807 /* TableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataSource.swift; sourceTree = "<group>"; };
+		97820186258AD962005D73A1 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		97C9F511258AB1B80031C862 /* TableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableView.swift; sourceTree = "<group>"; };
+		97C9F516258AB3DF0031C862 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		97EE80DD258AAF6500C6FE52 /* Cellorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		97EE80E4258AAF6500C6FE52 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		97EE80E4258AAF6500C6FE52 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		97EE80E7258AAF6500C6FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		97EE80E9258AAF6600C6FE52 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97EE80EC258AAF6600C6FE52 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +76,11 @@
 		97EE80FE258AAF6600C6FE52 /* CelloramaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CelloramaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EE8102258AAF6600C6FE52 /* CelloramaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CelloramaUITests.swift; sourceTree = "<group>"; };
 		97EE8104258AAF6600C6FE52 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97EE8113258AB08100C6FE52 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		A3408D8BE018F337B64DB709 /* Pods_Cellorama_CelloramaUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cellorama_CelloramaUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD91C14416A890D894A593BF /* Pods-Cellorama.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama.release.xcconfig"; path = "Target Support Files/Pods-Cellorama/Pods-Cellorama.release.xcconfig"; sourceTree = "<group>"; };
+		E7ADEF6A2140FA64025B6879 /* Pods-CelloramaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelloramaTests.debug.xcconfig"; path = "Target Support Files/Pods-CelloramaTests/Pods-CelloramaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EB98EE256568F7DD00B5AEF2 /* Pods-Cellorama-CelloramaUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama-CelloramaUITests.release.xcconfig"; path = "Target Support Files/Pods-Cellorama-CelloramaUITests/Pods-Cellorama-CelloramaUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +88,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E237B5A854A64F9B3E67628E /* Pods_Cellorama.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +96,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B998013F5C843F6D8228D389 /* Pods_CelloramaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,12 +104,69 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AA370E4A537BB2086086091D /* Pods_Cellorama_CelloramaUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		13F96177AE3EB6825578B83C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				93078C692283326CE98C5723 /* Pods_Cellorama.framework */,
+				A3408D8BE018F337B64DB709 /* Pods_Cellorama_CelloramaUITests.framework */,
+				0E00B8F10F5D044F824C278B /* Pods_CelloramaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		974FC0E9258ABB4400513807 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		974FC101258ABFC000513807 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				974FC0EA258ABB5A00513807 /* CollectionDataSource.swift */,
+				974FC102258AC16200513807 /* TableDataSource.swift */,
+				974FC0EF258ABCB300513807 /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97C9F50E258AB1770031C862 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				97EE8113258AB08100C6FE52 /* CollectionView.swift */,
+				97C9F511258AB1B80031C862 /* TableView.swift */,
+				97C9F516258AB3DF0031C862 /* View.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		97C9F50F258AB17F0031C862 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				974FC0F4258ABD4E00513807 /* CollectionCell.swift */,
+				974FC0F9258ABF8100513807 /* TableCell.swift */,
+				97820186258AD962005D73A1 /* Reusable.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		97C9F510258AB1860031C862 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				97EE80E4258AAF6500C6FE52 /* MainViewController.swift */,
+				97359F69258B2F5000452290 /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		97EE80D4258AAF6400C6FE52 = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +174,8 @@
 				97EE80F6258AAF6600C6FE52 /* CelloramaTests */,
 				97EE8101258AAF6600C6FE52 /* CelloramaUITests */,
 				97EE80DE258AAF6500C6FE52 /* Products */,
+				ED85F239C9806BB2EDEEF63A /* Pods */,
+				13F96177AE3EB6825578B83C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +192,13 @@
 		97EE80DF258AAF6500C6FE52 /* Cellorama */ = {
 			isa = PBXGroup;
 			children = (
+				97C9F50F258AB17F0031C862 /* Cells */,
+				97C9F510258AB1860031C862 /* Controllers */,
+				974FC101258ABFC000513807 /* Models */,
+				974FC0E9258ABB4400513807 /* Protocols */,
+				97C9F50E258AB1770031C862 /* Views */,
 				97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */,
 				97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */,
-				97EE80E4258AAF6500C6FE52 /* ViewController.swift */,
 				97EE80E6258AAF6500C6FE52 /* Main.storyboard */,
 				97EE80E9258AAF6600C6FE52 /* Assets.xcassets */,
 				97EE80EB258AAF6600C6FE52 /* LaunchScreen.storyboard */,
@@ -128,6 +225,19 @@
 			path = CelloramaUITests;
 			sourceTree = "<group>";
 		};
+		ED85F239C9806BB2EDEEF63A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				421AD5DA7587B11E6058ED79 /* Pods-Cellorama.debug.xcconfig */,
+				AD91C14416A890D894A593BF /* Pods-Cellorama.release.xcconfig */,
+				3B20E5F5810D666BBE6BFE97 /* Pods-Cellorama-CelloramaUITests.debug.xcconfig */,
+				EB98EE256568F7DD00B5AEF2 /* Pods-Cellorama-CelloramaUITests.release.xcconfig */,
+				E7ADEF6A2140FA64025B6879 /* Pods-CelloramaTests.debug.xcconfig */,
+				65B1CF9FC6B7384A6292E1C7 /* Pods-CelloramaTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +245,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97EE8107258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "Cellorama" */;
 			buildPhases = (
+				F70D26EFB07E4D76ED9550E7 /* [CP] Check Pods Manifest.lock */,
 				97EE80D9258AAF6400C6FE52 /* Sources */,
 				97EE80DA258AAF6400C6FE52 /* Frameworks */,
 				97EE80DB258AAF6400C6FE52 /* Resources */,
+				28B56AA73F46B672DE22C9A7 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -152,6 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97EE810A258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaTests" */;
 			buildPhases = (
+				5A2EAEB0B37ACB3506B631A0 /* [CP] Check Pods Manifest.lock */,
 				97EE80EF258AAF6600C6FE52 /* Sources */,
 				97EE80F0258AAF6600C6FE52 /* Frameworks */,
 				97EE80F1258AAF6600C6FE52 /* Resources */,
@@ -170,9 +283,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97EE810D258AAF6600C6FE52 /* Build configuration list for PBXNativeTarget "CelloramaUITests" */;
 			buildPhases = (
+				45882D4CFF5F05C4B6A98E87 /* [CP] Check Pods Manifest.lock */,
 				97EE80FA258AAF6600C6FE52 /* Sources */,
 				97EE80FB258AAF6600C6FE52 /* Frameworks */,
 				97EE80FC258AAF6600C6FE52 /* Resources */,
+				C84E0AEB6A04C48ACA2CB2F9 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -253,13 +368,126 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		28B56AA73F46B672DE22C9A7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cellorama/Pods-Cellorama-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cellorama/Pods-Cellorama-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cellorama/Pods-Cellorama-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45882D4CFF5F05C4B6A98E87 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cellorama-CelloramaUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5A2EAEB0B37ACB3506B631A0 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CelloramaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C84E0AEB6A04C48ACA2CB2F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cellorama-CelloramaUITests/Pods-Cellorama-CelloramaUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Cellorama-CelloramaUITests/Pods-Cellorama-CelloramaUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Cellorama-CelloramaUITests/Pods-Cellorama-CelloramaUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F70D26EFB07E4D76ED9550E7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Cellorama-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		97EE80D9258AAF6400C6FE52 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				97EE80E5258AAF6500C6FE52 /* ViewController.swift in Sources */,
+				97820187258AD962005D73A1 /* Reusable.swift in Sources */,
+				974FC0FA258ABF8100513807 /* TableCell.swift in Sources */,
+				974FC0EB258ABB5A00513807 /* CollectionDataSource.swift in Sources */,
+				97EE80E5258AAF6500C6FE52 /* MainViewController.swift in Sources */,
+				97C9F512258AB1B80031C862 /* TableView.swift in Sources */,
+				97C9F517258AB3DF0031C862 /* View.swift in Sources */,
+				974FC0F0258ABCB300513807 /* Item.swift in Sources */,
+				974FC0F5258ABD4E00513807 /* CollectionCell.swift in Sources */,
+				97359F6A258B2F5000452290 /* ViewController.swift in Sources */,
 				97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */,
+				97EE8114258AB08100C6FE52 /* CollectionView.swift in Sources */,
+				974FC103258AC16200513807 /* TableDataSource.swift in Sources */,
 				97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -433,6 +661,7 @@
 		};
 		97EE8108258AAF6600C6FE52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 421AD5DA7587B11E6058ED79 /* Pods-Cellorama.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -452,6 +681,7 @@
 		};
 		97EE8109258AAF6600C6FE52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD91C14416A890D894A593BF /* Pods-Cellorama.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -471,6 +701,7 @@
 		};
 		97EE810B258AAF6600C6FE52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E7ADEF6A2140FA64025B6879 /* Pods-CelloramaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +724,7 @@
 		};
 		97EE810C258AAF6600C6FE52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 65B1CF9FC6B7384A6292E1C7 /* Pods-CelloramaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -515,6 +747,7 @@
 		};
 		97EE810E258AAF6600C6FE52 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B20E5F5810D666BBE6BFE97 /* Pods-Cellorama-CelloramaUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -535,6 +768,7 @@
 		};
 		97EE810F258AAF6600C6FE52 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB98EE256568F7DD00B5AEF2 /* Pods-Cellorama-CelloramaUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
