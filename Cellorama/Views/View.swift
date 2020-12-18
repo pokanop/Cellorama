@@ -13,9 +13,9 @@ class View: UIView {
         case small
         case medium
         case large
-//        case dynamic
+        case dynamic
         
-        static var random: Size { Size.allCases.randomElement()! }
+        static var random: Size { [.small, .medium, .large].randomElement()! }
         
         func configure(_ view: View) {
             switch self {
@@ -33,7 +33,7 @@ class View: UIView {
                     make.height.equalTo(100.0)
                     make.width.equalTo(160.0)
                 }
-//            case .dynamic: return
+            case .dynamic: return
             }
         }
     }

@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import SnapKit
 
 class CollectionCell: UICollectionViewCell, Reusable {
     
     weak var containerViewController: UIViewController?
     var childViewController: UIViewController?
+    var collectionView: CollectionView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -47,7 +49,7 @@ class CollectionCell: UICollectionViewCell, Reusable {
         let source = CollectionDataSource(container: container, containerViewController: containerViewController)
         let view = CollectionView(source: source)
         
-        configure(view: view)
+        configure(view: view, for: container)
     }
     
     func configure(element: Element?) {
@@ -57,11 +59,16 @@ class CollectionCell: UICollectionViewCell, Reusable {
         configure(viewController: vc)
     }
     
-    func configure(view: UIView) {
+    func configure(view: CollectionView, for container: Container) {
+        guard let containerViewController = containerViewController else { return }
+        
         contentView.addSubview(view)
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().priority(999)
+            make.width.equalTo(container.maxWidth(for: containerViewController.view.bounds))
         }
+//        view.layoutIfNeeded()
+        collectionView = view
     }
     
     func configure(viewController: UIViewController) {
@@ -79,11 +86,24 @@ class CollectionCell: UICollectionViewCell, Reusable {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        guard let childViewController = childViewController else { return }
+        childViewController?.willMove(toParent: nil)
+        contentView.subviews.forEach { $0.removeFromSuperview() }
+        childViewController?.removeFromParent()
         
-        childViewController.willMove(toParent: nil)
-        childViewController.view.removeFromSuperview()
-        childViewController.removeFromParent()
+        self.collectionView = nil
+        self.childViewController = nil
+    }
+    
+    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        guard let collectionView = collectionView else {
+            return super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+        }
+
+//        collectionView.frame = collectionView.bounds
+//        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
+
+        return collectionView.collectionViewLayout.collectionViewContentSize
     }
     
 }

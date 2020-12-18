@@ -9,7 +9,16 @@ import UIKit
 
 final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var container: Container
+    lazy var layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+        layout.minimumInteritemSpacing = container.itemSpacing
+        layout.sectionInset = container.insets
+        layout.scrollDirection = container.layoutStyle == .carousel ? .horizontal : .vertical
+        return layout
+    }()
+    
+    let container: Container
     var items: [Item] { container.items }
     var numberOfItems: Int { items.count }
     weak var containerViewController: UIViewController?

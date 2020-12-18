@@ -14,6 +14,12 @@ enum ItemKind {
     
 }
 
+enum LayoutStyle {
+    case zone
+    case grid
+    case carousel
+}
+
 protocol Item {
     
     var kind: ItemKind { get }
@@ -32,7 +38,15 @@ extension Item {
 struct Container: Item {
     
     var kind: ItemKind = .container
+    var layoutStyle: LayoutStyle = .zone
     var items: [Item] = []
+    var itemSpacing: CGFloat = 10.0
+    var insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
+    var isRoot: Bool = false
+    
+    func maxWidth(for bounds: CGRect) -> CGFloat {
+        bounds.width - insets.left - insets.right
+    }
     
 }
 
@@ -51,4 +65,24 @@ func randomEmoji() -> String {
 
 func randomColor() -> UIColor {
     [.blue, .black, .red, .green, .yellow, .brown, .cyan, .darkGray, .gray, .lightGray, .magenta, .orange, .purple, .white].randomElement()!
+}
+
+func randomElements(count: Int) -> [Item] {
+    var items: [Item] = []
+    for _ in 0..<count {
+        items.append(Element())
+    }
+    return items
+}
+
+func randomItems(count: Int) -> [Item] {
+    var items: [Item] = []
+    for _ in 0..<count {
+        if Bool.random() {
+            items.append(Element())
+        } else {
+            items.append(Container(items: randomElements(count: 20)))
+        }
+    }
+    return items
 }

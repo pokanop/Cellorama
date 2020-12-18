@@ -11,10 +11,7 @@ import SnapKit
 class MainViewController: UIViewController {
     
     lazy var collectionView: CollectionView = {
-        var items: [Item] = []
-        for _ in 1...100 { items.append(Element()) }
-        let container = Container(items: items)
-        let source = CollectionDataSource(container: container, containerViewController: self)
+        let source = CollectionDataSource(container: Container(items: randomItems(count: 10), isRoot: true), containerViewController: self)
         let view = CollectionView(source: source)
         return view
     }()
