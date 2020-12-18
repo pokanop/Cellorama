@@ -18,10 +18,21 @@ final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollec
         return layout
     }()
     
-    let container: Container
+    var container: Container
     var items: [Item] { container.items }
     var numberOfItems: Int { items.count }
     weak var containerViewController: UIViewController?
+    weak var cell: CollectionCell?
+    
+    var maxItemHeight: CGFloat {
+        get { container.maxItemHeight }
+        set {
+            guard maxItemHeight != newValue else { return }
+            
+            container.maxItemHeight = container.maxHeight(for: newValue)
+            cell?.heightConstraint?.update(offset: maxItemHeight)
+        }
+    }
     
     init(container: Container, containerViewController: UIViewController) {
         self.container = container
@@ -38,6 +49,7 @@ final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollec
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseIdentifier, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
         
+        cell.source = self
         cell.containerViewController = containerViewController
         cell.configure(item: items[indexPath.row])
         

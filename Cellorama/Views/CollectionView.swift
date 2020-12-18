@@ -10,6 +10,7 @@ import UIKit
 class CollectionView: UICollectionView {
     
     let source: CollectionDataSource
+    var container: Container { source.container }
     
 //    override var intrinsicContentSize: CGSize { collectionViewLayout.collectionViewContentSize }
     
@@ -35,9 +36,14 @@ class CollectionView: UICollectionView {
 //
 //        invalidateIntrinsicContentSize()
         
-        guard !source.container.isRoot else { return }
+        guard !container.isRoot else { return }
         
-        frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height)
+        if container.layoutStyle == .carousel {
+            frame = CGRect(x: 0, y: 0, width: frame.width, height: source.maxItemHeight)
+        } else {
+            frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height)
+        }
+        
     }
     
 }

@@ -13,9 +13,10 @@ class View: UIView {
         case small
         case medium
         case large
+        case xlarge
         case dynamic
         
-        static var random: Size { [.small, .medium, .large].randomElement()! }
+        static var random: Size { [.small, .medium, .large, .xlarge].randomElement()! }
         
         func configure(_ view: View) {
             switch self {
@@ -32,6 +33,11 @@ class View: UIView {
                 view.snp.remakeConstraints { make in
                     make.height.equalTo(100.0)
                     make.width.equalTo(160.0)
+                }
+            case .xlarge:
+                view.snp.remakeConstraints { make in
+                    make.height.equalTo(220.0)
+                    make.width.equalTo(320.0)
                 }
             case .dynamic: return
             }

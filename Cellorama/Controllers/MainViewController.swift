@@ -11,6 +11,10 @@ import SnapKit
 class MainViewController: UIViewController {
     
     lazy var collectionView: CollectionView = {
+//        let source = CollectionDataSource(container: Container(layoutStyle: .zone,
+//                                                               items: [Container(layoutStyle: .carousel, items: randomElements(count: 20))],
+//                                                               isRoot: true),
+//                                          containerViewController: self)
         let source = CollectionDataSource(container: Container(items: randomItems(count: 10), isRoot: true), containerViewController: self)
         let view = CollectionView(source: source)
         return view

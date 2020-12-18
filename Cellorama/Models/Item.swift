@@ -7,17 +7,25 @@
 
 import UIKit
 
-enum ItemKind {
+enum ItemKind: CaseIterable {
     
     case container
     case element
     
 }
 
-enum LayoutStyle {
+enum LayoutStyle: CaseIterable {
+    
     case zone
     case grid
     case carousel
+    
+}
+
+extension CaseIterable {
+    
+    static var random: Self { allCases.randomElement()! }
+    
 }
 
 protocol Item {
@@ -43,9 +51,14 @@ struct Container: Item {
     var itemSpacing: CGFloat = 10.0
     var insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
     var isRoot: Bool = false
+    var maxItemHeight: CGFloat = 0.0
     
     func maxWidth(for bounds: CGRect) -> CGFloat {
         bounds.width - insets.left - insets.right
+    }
+    
+    func maxHeight(for height: CGFloat) -> CGFloat {
+        height + insets.top + insets.bottom
     }
     
 }
@@ -84,7 +97,9 @@ func randomItems(count: Int, depth: Int = 0) -> [Item] {
             if depth > 2 {
                 items.append(Container(items: randomElements(count: (5...20).randomElement()!)))
             } else {
-                items.append(Container(items: randomItems(count: (1...3).randomElement()!, depth: depth + 1)))
+                items.append(Container(layoutStyle: .random,
+                                       items: randomItems(count: (1...3).randomElement()!,
+                                                   depth: depth + 1)))
             }
         }
     }

@@ -10,10 +10,12 @@ import SnapKit
 
 class CollectionCell: UICollectionViewCell, Reusable {
     
+    weak var source: CollectionDataSource?
     weak var containerViewController: UIViewController?
     var childViewController: UIViewController?
     var collectionView: CollectionView?
     var container: Container?
+    var heightConstraint: Constraint?
     var widthConstraint: Constraint?
     
     override init(frame: CGRect) {
@@ -49,6 +51,7 @@ class CollectionCell: UICollectionViewCell, Reusable {
               let containerViewController = containerViewController else { return }
         
         let source = CollectionDataSource(container: container, containerViewController: containerViewController)
+        source.cell = self
         let view = CollectionView(source: source)
         
         self.container = container
@@ -63,14 +66,15 @@ class CollectionCell: UICollectionViewCell, Reusable {
     }
     
     func configure(view: CollectionView) {
-        guard let container = container else { return }
+        guard let source = source,
+              let container = container else { return }
         
         contentView.addSubview(view)
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().priority(999)
+            heightConstraint = make.height.equalTo(source.maxItemHeight).priority(999).constraint
             widthConstraint = make.width.equalTo(container.maxWidth(for: superview?.frame ?? .zero)).constraint
         }
-//        view.layoutIfNeeded()
         collectionView = view
     }
     
@@ -96,24 +100,31 @@ class CollectionCell: UICollectionViewCell, Reusable {
         self.collectionView = nil
         self.childViewController = nil
         self.container = nil
+        self.heightConstraint = nil
         self.widthConstraint = nil
     }
     
     override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
+        guard let source = source else { return .zero }
+        
         guard let collectionView = collectionView,
               let container = container,
               let superview = superview,
               let widthConstraint = widthConstraint else {
-            return super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+            let size = super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+            source.maxItemHeight = max(source.maxItemHeight, size.height)
+            return size
         }
         
         widthConstraint.update(offset: container.maxWidth(for: superview.frame))
         
         collectionView.layoutIfNeeded()
-//        collectionView.frame = collectionView.bounds
-//        collectionView.reloadData()
-
-        return collectionView.collectionViewLayout.collectionViewContentSize
+        
+        var size = collectionView.collectionViewLayout.collectionViewContentSize
+        source.maxItemHeight = max(source.maxItemHeight, size.height)
+        if container.layoutStyle == .carousel { size.width = collectionView.frame.width }
+        
+        return size
     }
     
 }
