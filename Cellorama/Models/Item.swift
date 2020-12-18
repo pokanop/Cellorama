@@ -75,13 +75,17 @@ func randomElements(count: Int) -> [Item] {
     return items
 }
 
-func randomItems(count: Int) -> [Item] {
+func randomItems(count: Int, depth: Int = 0) -> [Item] {
     var items: [Item] = []
     for _ in 0..<count {
         if Bool.random() {
             items.append(Element())
         } else {
-            items.append(Container(items: randomElements(count: 20)))
+            if depth > 2 {
+                items.append(Container(items: randomElements(count: (5...20).randomElement()!)))
+            } else {
+                items.append(Container(items: randomItems(count: (1...3).randomElement()!, depth: depth + 1)))
+            }
         }
     }
     return items

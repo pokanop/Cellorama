@@ -11,7 +11,7 @@ class CollectionView: UICollectionView {
     
     let source: CollectionDataSource
     
-    override var intrinsicContentSize: CGSize { collectionViewLayout.collectionViewContentSize }
+//    override var intrinsicContentSize: CGSize { collectionViewLayout.collectionViewContentSize }
     
     init(source: CollectionDataSource) {
         self.source = source
