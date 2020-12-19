@@ -54,6 +54,8 @@
 		421AD5DA7587B11E6058ED79 /* Pods-Cellorama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama.debug.xcconfig"; path = "Target Support Files/Pods-Cellorama/Pods-Cellorama.debug.xcconfig"; sourceTree = "<group>"; };
 		65B1CF9FC6B7384A6292E1C7 /* Pods-CelloramaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelloramaTests.release.xcconfig"; path = "Target Support Files/Pods-CelloramaTests/Pods-CelloramaTests.release.xcconfig"; sourceTree = "<group>"; };
 		93078C692283326CE98C5723 /* Pods_Cellorama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cellorama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		970B6044258D8EE9008A4138 /* app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app.png; sourceTree = "<group>"; };
+		970B6045258D8EE9008A4138 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		97359F69258B2F5000452290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		974FC0EA258ABB5A00513807 /* CollectionDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionDataSource.swift; sourceTree = "<group>"; };
 		974FC0EF258ABCB300513807 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
@@ -123,6 +125,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		970B6043258D8EE9008A4138 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				970B6044258D8EE9008A4138 /* app.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		974FC0E9258ABB4400513807 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,6 +183,8 @@
 		97EE80D4258AAF6400C6FE52 = {
 			isa = PBXGroup;
 			children = (
+				970B6045258D8EE9008A4138 /* README.md */,
+				970B6043258D8EE9008A4138 /* Resources */,
 				97EE80DF258AAF6500C6FE52 /* Cellorama */,
 				97EE80F6258AAF6600C6FE52 /* CelloramaTests */,
 				97EE8101258AAF6600C6FE52 /* CelloramaUITests */,
