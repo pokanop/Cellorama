@@ -22,8 +22,6 @@ class CollectionView: UICollectionView {
     
     var container: Container { source.container }
     
-//    override var intrinsicContentSize: CGSize { collectionViewLayout.collectionViewContentSize }
-    
     init(source: CollectionDataSource) {
         self.source = source
         super.init(frame: .zero, collectionViewLayout: source.layout)
@@ -41,13 +39,8 @@ class CollectionView: UICollectionView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-
-//        guard !bounds.size.equalTo(intrinsicContentSize) else { return }
-//
-//        invalidateIntrinsicContentSize()
         
         guard !container.isRoot else { return }
-        
         
         var height: CGFloat
         var width: CGFloat

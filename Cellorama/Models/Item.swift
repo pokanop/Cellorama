@@ -87,11 +87,12 @@ func randomColor() -> UIColor {
 }
 
 func randomElements(count: Int) -> [Item] {
-    var items: [Item] = []
-    for _ in 0..<count {
-        items.append(Element())
-    }
-    return items
+    (0..<count).map { _ in Element() }
+}
+
+func randomContainers(count: Int, style: LayoutStyle?) -> [Item] {
+    (0..<count).map { _ in Container(layoutStyle: style ?? .random,
+                                     items: randomElements(count: count)) }
 }
 
 func randomItems(count: Int, depth: Int = 0) -> [Item] {

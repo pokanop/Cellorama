@@ -45,9 +45,22 @@ final class TabViewController: UIViewController {
         }
         
         func source(count: Int, size: View.Size, controller: UIViewController) -> CollectionDataSource {
-            let containers = Cellorama.containers(count: count,
+            var containers: [Item]
+            if self == .mixed {
+                var layout: LayoutStyle?
+                switch size {
+                case .small: layout = .zone
+                case .medium: layout = .grid(2)
+                case .large: layout = .carousel
+                default: break
+                }
+                containers = Cellorama.randomContainers(count: count,
+                                                        style: layout)
+            } else {
+                containers = Cellorama.containers(count: count,
                                                   style: layout,
                                                   size: size)
+            }
             let container: Container = Container(layoutStyle: .zone,
                                                  items: containers,
                                                  isRoot: true)
@@ -106,32 +119,32 @@ final class TabViewController: UIViewController {
         }
         
         let leftItems: [UIBarButtonItem] = [
-            UIBarButtonItem(image: Mode.small.image, style: .plain, target: self, action: #selector(smallSelected)),
-            UIBarButtonItem(image: Mode.medium.image, style: .plain, target: self, action: #selector(mediumSelected))
+            UIBarButtonItem(image: Mode.small.image, style: .plain, target: self, action: #selector(oneSelected)),
+            UIBarButtonItem(image: Mode.medium.image, style: .plain, target: self, action: #selector(twoSelected))
         ]
         let rightItems: [UIBarButtonItem] = [
-            UIBarButtonItem(image: Mode.xlarge.image, style: .plain, target: self, action: #selector(xlargeSelected)),
-            UIBarButtonItem(image: Mode.large.image, style: .plain, target: self, action: #selector(largeSelected))
+            UIBarButtonItem(image: Mode.xlarge.image, style: .plain, target: self, action: #selector(fourSelected)),
+            UIBarButtonItem(image: Mode.large.image, style: .plain, target: self, action: #selector(threeSelected))
         ]
         navigationItem.setLeftBarButtonItems(leftItems, animated: true)
         navigationItem.setRightBarButtonItems(rightItems, animated: true)
         
-        smallSelected()
+        oneSelected()
     }
     
-    @objc func smallSelected() {
+    @objc func oneSelected() {
         collectionView.source = style.source(count: count, size: .small, controller: self)
     }
     
-    @objc func mediumSelected() {
+    @objc func twoSelected() {
         collectionView.source = style.source(count: count, size: .medium, controller: self)
     }
     
-    @objc func largeSelected() {
+    @objc func threeSelected() {
         collectionView.source = style.source(count: count, size: .large, controller: self)
     }
     
-    @objc func xlargeSelected() {
+    @objc func fourSelected() {
         collectionView.source = style.source(count: count, size: .xlarge, controller: self)
     }
 

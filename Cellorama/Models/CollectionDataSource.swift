@@ -41,16 +41,14 @@ final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("### \(container.layoutStyle) num items \(numberOfItems)")
-        return numberOfItems
+        numberOfItems
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("### \(container.layoutStyle) dequeuing cell \(indexPath)")
         guard numberOfItems > indexPath.row else { return UICollectionViewCell() }
         
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseIdentifier, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
-        print("### \(container.layoutStyle) configuring cell \(indexPath)")
+        
         cell.source = self
         cell.containerViewController = containerViewController
         cell.configure(item: items[indexPath.row])
