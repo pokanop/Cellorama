@@ -68,7 +68,7 @@ class CollectionCell: UICollectionViewCell, Reusable {
     func configure(view: CollectionView) {
         guard let source = source,
               let container = container else { return }
-        
+        print("### \(container.layoutStyle) constraints (\(container.maxWidth(for: superview?.frame ?? .zero)), \(source.maxItemHeight))")
         contentView.addSubview(view)
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().priority(999)
@@ -113,6 +113,7 @@ class CollectionCell: UICollectionViewCell, Reusable {
               let widthConstraint = widthConstraint else {
             let size = super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
             source.maxItemHeight = max(source.maxItemHeight, size.height)
+            print("### element size \(size)")
             return size
         }
         
@@ -121,9 +122,10 @@ class CollectionCell: UICollectionViewCell, Reusable {
         collectionView.layoutIfNeeded()
         
         var size = collectionView.collectionViewLayout.collectionViewContentSize
+        print("### \(container.layoutStyle) size \(size)")
         source.maxItemHeight = max(source.maxItemHeight, size.height)
         if container.layoutStyle == .carousel { size.width = collectionView.frame.width }
-        
+        print("### \(container.layoutStyle) constraints - updated \(size)")
         return size
     }
     

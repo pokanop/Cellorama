@@ -14,11 +14,13 @@ enum ItemKind: CaseIterable {
     
 }
 
-enum LayoutStyle: CaseIterable {
+enum LayoutStyle: CaseIterable, Equatable {
     
     case zone
-    case grid
+    case grid(Int)
     case carousel
+    
+    static var allCases: [LayoutStyle] { [.zone, .grid(2), .carousel] }
     
 }
 
@@ -54,7 +56,11 @@ struct Container: Item {
     var maxItemHeight: CGFloat = 0.0
     
     func maxWidth(for bounds: CGRect) -> CGFloat {
-        bounds.width - insets.left - insets.right
+//        if case .grid(let items) = layoutStyle {
+//            return bounds.width / CGFloat(items) - insets.left - insets.right
+//        } else {
+            return max(bounds.width - insets.left - insets.right, 0)
+//        }
     }
     
     func maxHeight(for height: CGFloat) -> CGFloat {
@@ -77,7 +83,7 @@ func randomEmoji() -> String {
 }
 
 func randomColor() -> UIColor {
-    [.blue, .black, .red, .green, .yellow, .brown, .cyan, .darkGray, .gray, .lightGray, .magenta, .orange, .purple, .white].randomElement()!
+    [.blue, .black, .red, .green, .yellow, .brown, .cyan, .darkGray, .gray, .lightGray, .magenta, .orange, .purple].randomElement()!
 }
 
 func randomElements(count: Int) -> [Item] {
@@ -104,4 +110,13 @@ func randomItems(count: Int, depth: Int = 0) -> [Item] {
         }
     }
     return items
+}
+
+func elements(count: Int, size: View.Size) -> [Item] {
+    (0..<count).map { _ in Element(size: size) }
+}
+
+func containers(count: Int, style: LayoutStyle, size: View.Size) -> [Item] {
+    (0..<count).map { _ in Container(layoutStyle: style,
+                                     items: elements(count: count, size: size)) }
 }

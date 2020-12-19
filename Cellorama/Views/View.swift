@@ -50,9 +50,9 @@ class View: UIView {
     
     lazy var label: UILabel = {
         let view = UILabel()
-        view.font = UIFont.preferredFont(forTextStyle: .headline)
+        view.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         view.numberOfLines = 2
-        view.textColor = backgroundColor == .white ? .black : .white
+        view.textColor = .black
         view.textAlignment = .center
         return view
     }()

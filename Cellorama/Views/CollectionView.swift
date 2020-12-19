@@ -9,7 +9,17 @@ import UIKit
 
 class CollectionView: UICollectionView {
     
-    let source: CollectionDataSource
+    var source: CollectionDataSource {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionViewLayout = self.source.layout
+                self.dataSource = self.source
+                self.delegate = self.source
+                self.reloadData()
+            }
+        }
+    }
+    
     var container: Container { source.container }
     
 //    override var intrinsicContentSize: CGSize { collectionViewLayout.collectionViewContentSize }
@@ -38,11 +48,22 @@ class CollectionView: UICollectionView {
         
         guard !container.isRoot else { return }
         
+        
+        var height: CGFloat
+        var width: CGFloat
+        
         if container.layoutStyle == .carousel {
-            frame = CGRect(x: 0, y: 0, width: frame.width, height: source.maxItemHeight)
+            height = source.maxItemHeight
+            width = frame.width
         } else {
-            frame = CGRect(x: 0, y: 0, width: contentSize.width, height: contentSize.height)
+            height = contentSize.height
+            width = contentSize.width
         }
+        
+        frame = CGRect(x: frame.origin.x,
+                       y: frame.origin.y,
+                       width: width > 0 ? width : frame.height,
+                       height: height > 0 ? height : frame.width)
         
     }
     
