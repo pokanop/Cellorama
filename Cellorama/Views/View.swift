@@ -63,6 +63,7 @@ class View: UIView {
         backgroundColor = element.color
         size = element.size
         
+        applyCorner(to: layer)
         addSubview(label)
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()

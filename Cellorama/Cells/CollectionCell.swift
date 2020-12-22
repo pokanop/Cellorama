@@ -18,27 +18,12 @@ class CollectionCell: UICollectionViewCell, Reusable {
     var heightConstraint: Constraint?
     var widthConstraint: Constraint?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        layer.cornerRadius = 10
-        layer.masksToBounds = false
-        layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowOffset = .zero
-        layer.shadowRadius = 5
-        contentView.layer.cornerRadius = 10
-        contentView.layer.masksToBounds = true
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        if layer.shadowOpacity > 0 {
+            layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        }
     }
     
     func configure(item: Item) {
@@ -69,6 +54,9 @@ class CollectionCell: UICollectionViewCell, Reusable {
         guard let source = source,
               let container = container else { return }
         
+        applyShadow(to: layer)
+        applyCorner(to: contentView.layer)
+        
         contentView.addSubview(view)
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().priority(999)
@@ -79,11 +67,15 @@ class CollectionCell: UICollectionViewCell, Reusable {
     }
     
     func configure(viewController: UIViewController) {
-        guard let containerViewController = containerViewController else { return }
+        guard let source = source,
+              let containerViewController = containerViewController else { return }
         
         containerViewController.addChild(viewController)
         contentView.addSubview(viewController.view)
         viewController.view.snp.makeConstraints { make in
+            if source.container.isGrid {
+                make.center.equalToSuperview()
+            }
             make.edges.equalToSuperview().priority(999)
         }
         viewController.didMove(toParent: containerViewController)
@@ -111,7 +103,13 @@ class CollectionCell: UICollectionViewCell, Reusable {
               let container = container,
               let superview = superview,
               let widthConstraint = widthConstraint else {
-            let size = super.systemLayoutSizeFitting(targetSize, withHorizontalFittingPriority: horizontalFittingPriority, verticalFittingPriority: verticalFittingPriority)
+            var size = super.systemLayoutSizeFitting(targetSize,
+                                                     withHorizontalFittingPriority: horizontalFittingPriority,
+                                                     verticalFittingPriority: verticalFittingPriority)
+
+            if source.container.isGrid {
+                size.width = max(size.width, source.maxItemWidth)
+            }
             source.maxItemHeight = max(source.maxItemHeight, size.height)
             
             return size
@@ -122,10 +120,26 @@ class CollectionCell: UICollectionViewCell, Reusable {
         collectionView.layoutIfNeeded()
         
         var size = collectionView.collectionViewLayout.collectionViewContentSize
-        source.maxItemHeight = max(source.maxItemHeight, size.height)
-        if container.layoutStyle == .carousel { size.width = collectionView.frame.width }
+        if container.layoutStyle == .carousel {
+            source.maxItemHeight = max(source.maxItemHeight, size.height)
+            size.width = collectionView.frame.width
+        }
         
         return size
     }
     
+}
+
+func applyCorner(to layer: CALayer) {
+    layer.cornerRadius = 10
+    layer.masksToBounds = true
+}
+
+func applyShadow(to layer: CALayer) {
+    layer.cornerRadius = 10
+    layer.masksToBounds = false
+    layer.shadowColor = UIColor.black.cgColor
+    layer.shadowOpacity = 0.2
+    layer.shadowOffset = .zero
+    layer.shadowRadius = 5
 }

@@ -53,14 +53,11 @@ struct Container: Item {
     var itemSpacing: CGFloat = 10.0
     var insets: UIEdgeInsets = UIEdgeInsets(top: 8.0, left: 8.0, bottom: 8.0, right: 8.0)
     var isRoot: Bool = false
+    var isGrid: Bool { layoutStyle != .carousel && layoutStyle != .zone }
     var maxItemHeight: CGFloat = 0.0
     
     func maxWidth(for bounds: CGRect) -> CGFloat {
-//        if case .grid(let items) = layoutStyle {
-//            return bounds.width / CGFloat(items) - insets.left - insets.right
-//        } else {
-            return max(bounds.width - insets.left - insets.right, 0)
-//        }
+        max(bounds.width - insets.left - insets.right, 0)
     }
     
     func maxHeight(for height: CGFloat) -> CGFloat {

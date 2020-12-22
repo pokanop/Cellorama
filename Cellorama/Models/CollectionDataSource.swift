@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
+class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate {
     
     lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -32,6 +32,16 @@ final class CollectionDataSource: NSObject, UICollectionViewDataSource, UICollec
             container.maxItemHeight = container.maxHeight(for: newValue)
             cell?.heightConstraint?.update(offset: maxItemHeight)
         }
+    }
+    
+    var maxItemWidth: CGFloat {
+        guard let cell = cell,
+              let superview = cell.superview,
+              case .grid(let items) = container.layoutStyle else { return 0 }
+        
+        let width = container.maxWidth(for: superview.frame) - CGFloat(items - 1) * layout.minimumInteritemSpacing - container.insets.left - container.insets.right
+        
+        return width / CGFloat(items)
     }
     
     init(container: Container, containerViewController: UIViewController) {
