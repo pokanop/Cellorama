@@ -78,3 +78,26 @@ class View: UIView {
     }
     
 }
+
+
+extension UIView {
+    
+    func applyCorner(to layer: CALayer? = nil) {
+        let layer = layer ?? self.layer
+        
+        layer.cornerRadius = 10
+        layer.masksToBounds = true
+    }
+
+    func applyShadow(to layer: CALayer? = nil) {
+        let layer = layer ?? self.layer
+        
+        layer.cornerRadius = 10
+        layer.masksToBounds = false
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowOffset = .zero
+        layer.shadowRadius = 5
+    }
+
+}

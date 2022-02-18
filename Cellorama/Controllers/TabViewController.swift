@@ -44,8 +44,8 @@ final class TabViewController: UIViewController {
             }
         }
         
-        func source(count: Int, size: View.Size, controller: UIViewController) -> CollectionDataSource {
-            var containers: [Item]
+        func source(count: Int, size: View.Size, controller: UIViewController) -> CollectionSourceable {
+            var containers: [AnyItem]
             if self == .mixed {
                 var layout: LayoutStyle?
                 switch size {
@@ -64,8 +64,8 @@ final class TabViewController: UIViewController {
             let container: Container = Container(layoutStyle: .zone,
                                                  items: containers,
                                                  isRoot: true)
-            return CollectionDataSource(container: container,
-                                        containerViewController: controller)
+            return LegacyDataSource(container: container,
+                                    containerViewController: controller)
         }
         
     }
@@ -88,9 +88,9 @@ final class TabViewController: UIViewController {
     }
     
     lazy var collectionView: CollectionView = {
-        let source = CollectionDataSource(container: Container(),
-                                          containerViewController: self)
-        let view = CollectionView(source: source)
+        let source = LegacyDataSource(container: Container(),
+                                      containerViewController: self)
+        let view = LegacyCollectionView(source: source)
         return view
     }()
     

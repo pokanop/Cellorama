@@ -10,11 +10,13 @@ import SnapKit
 
 class CollectionCell: UICollectionViewCell, Reusable {
     
-    weak var source: CollectionDataSource?
+    weak var source: LegacyDataSource?
     weak var containerViewController: UIViewController?
-    var childViewController: UIViewController?
+    var childViewController: ViewController?
     var collectionView: CollectionView?
+    var parent: Container?
     var container: Container?
+    var element: Element?
     var heightConstraint: Constraint?
     var widthConstraint: Constraint?
     
@@ -26,7 +28,8 @@ class CollectionCell: UICollectionViewCell, Reusable {
         }
     }
     
-    func configure(item: Item) {
+    func configure(item: AnyItem, parent: Container) {
+        self.parent = parent
         configure(container: item.asContainer)
         configure(element: item.asElement)
     }
@@ -35,9 +38,8 @@ class CollectionCell: UICollectionViewCell, Reusable {
         guard let container = container,
               let containerViewController = containerViewController else { return }
         
-        let source = CollectionDataSource(container: container, containerViewController: containerViewController)
-        source.cell = self
-        let view = CollectionView(source: source)
+        let source = LegacyDataSource(container: container, containerViewController: containerViewController)
+        let view = LegacyCollectionView(source: source)
         
         self.container = container
         configure(view: view)
@@ -47,12 +49,12 @@ class CollectionCell: UICollectionViewCell, Reusable {
         guard let element = element else { return }
         
         let vc = ViewController(element: element)
+        self.element = element
         configure(viewController: vc)
     }
     
     func configure(view: CollectionView) {
-        guard let source = source,
-              let container = container else { return }
+        guard let parent = parent else { return }
         
         applyShadow(to: layer)
         applyCorner(to: contentView.layer)
@@ -60,20 +62,20 @@ class CollectionCell: UICollectionViewCell, Reusable {
         contentView.addSubview(view)
         view.snp.makeConstraints { make in
             make.edges.equalToSuperview().priority(999)
-            heightConstraint = make.height.equalTo(source.maxItemHeight).priority(999).constraint
-            widthConstraint = make.width.equalTo(container.maxWidth(for: superview?.frame ?? .zero)).constraint
+            heightConstraint = make.height.equalTo(CGFloat.greatestFiniteMagnitude).priority(999).constraint
+            widthConstraint = make.width.equalTo(parent.maxWidth(for: superview?.frame ?? .zero)).constraint
         }
         collectionView = view
     }
     
-    func configure(viewController: UIViewController) {
-        guard let source = source,
+    func configure(viewController: ViewController) {
+        guard let parent = parent,
               let containerViewController = containerViewController else { return }
         
         containerViewController.addChild(viewController)
         contentView.addSubview(viewController.view)
         viewController.view.snp.makeConstraints { make in
-            if source.container.isGrid {
+            if parent.isGrid {
                 make.center.equalToSuperview()
             }
             make.edges.equalToSuperview().priority(999)
@@ -96,50 +98,63 @@ class CollectionCell: UICollectionViewCell, Reusable {
         self.widthConstraint = nil
     }
     
-    override func systemLayoutSizeFitting(_ targetSize: CGSize, withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority, verticalFittingPriority: UILayoutPriority) -> CGSize {
-        guard let source = source else { return .zero }
+    override func systemLayoutSizeFitting(_ targetSize: CGSize,
+                                          withHorizontalFittingPriority horizontalFittingPriority: UILayoutPriority,
+                                          verticalFittingPriority: UILayoutPriority) -> CGSize {
+        guard let source = source,
+              let parent = parent else { return .zero }
+        
+        var size: CGSize
         
         guard let collectionView = collectionView,
               let container = container,
               let superview = superview,
               let widthConstraint = widthConstraint else {
-            var size = super.systemLayoutSizeFitting(targetSize,
+            // Element sizing
+            guard let element = element else { return targetSize }
+            
+            let cachedSize = sizeCache.size(for: element.identifier)
+            if !cachedSize.equalTo(.zero) {
+                return cachedSize
+            }
+            
+            size = super.systemLayoutSizeFitting(targetSize,
                                                      withHorizontalFittingPriority: horizontalFittingPriority,
                                                      verticalFittingPriority: verticalFittingPriority)
 
-            if source.container.isGrid {
-                size.width = max(size.width, source.maxItemWidth)
+            if parent.isGrid {
+                size.width = max(size.width, parent.maxItemWidth(for: bounds, minimumInteritemSpacing: source.flowLayout.minimumInteritemSpacing))
             }
-            source.maxItemHeight = max(source.maxItemHeight, size.height)
+            
+            sizeCache.setMaxHeight(size.height, for: parent.identifier)
+            sizeCache.setSize(size, for: element.identifier)
+            
+            heightConstraint?.update(offset: size.height)
             
             return size
         }
         
+        // Container sizing
+        let cachedSize = sizeCache.size(for: container.identifier)
+        if !cachedSize.equalTo(.zero) {
+            return cachedSize
+        }
+        
         widthConstraint.update(offset: container.maxWidth(for: superview.frame))
         
+        collectionView.frame = bounds
         collectionView.layoutIfNeeded()
         
-        var size = collectionView.collectionViewLayout.collectionViewContentSize
+        size = collectionView.collectionViewLayout.collectionViewContentSize
         if container.layoutStyle == .carousel {
-            source.maxItemHeight = max(source.maxItemHeight, size.height)
+            size.height = sizeCache.maxHeight(for: container.identifier, with: container)
             size.width = collectionView.frame.width
         }
+        
+        sizeCache.setSize(size, for: container.identifier)
+        heightConstraint?.update(offset: size.height)
         
         return size
     }
     
-}
-
-func applyCorner(to layer: CALayer) {
-    layer.cornerRadius = 10
-    layer.masksToBounds = true
-}
-
-func applyShadow(to layer: CALayer) {
-    layer.cornerRadius = 10
-    layer.masksToBounds = false
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOpacity = 0.2
-    layer.shadowOffset = .zero
-    layer.shadowRadius = 5
 }
