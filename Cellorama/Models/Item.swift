@@ -122,6 +122,11 @@ struct Container: Item {
     var isGrid: Bool { if case .grid(_) = layoutStyle { return true } else { return false } }
     var isCarousel: Bool { layoutStyle == .carousel }
     
+    var itemsPerRow: CGFloat {
+        guard case .grid(let items) = layoutStyle else { return 1.0 }
+        return CGFloat(items)
+    }
+    
     static func == (lhs: Container, rhs: Container) -> Bool {
         lhs.identifier == rhs.identifier
     }

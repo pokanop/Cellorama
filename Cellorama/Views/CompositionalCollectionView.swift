@@ -1,0 +1,72 @@
+//
+//  CompositionalCollectionView.swift
+//  Cellorama
+//
+//  Created by Sahel Jalal on 2/17/22.
+//
+
+import Foundation
+import UIKit
+
+final class CompositionalCollectionView: UICollectionView, CollectionViewable {
+    
+    var source: CollectionSourceable {
+        didSet {
+            setCollectionViewLayout(source.layout, animated: true)
+            applySnapshot()
+        }
+    }
+    
+    private var compositionalSource: CompositionalDataSource? { source as? CompositionalDataSource }
+    
+    private var uiDataSource: UICollectionViewDiffableDataSource<Container, Element>?
+    
+    init(source: CollectionSourceable) {
+        self.source = source
+        super.init(frame: .zero, collectionViewLayout: source.layout)
+        
+        backgroundColor = .white
+        
+        register(SectionHeader.self,
+                 forSupplementaryViewOfKind: SectionHeader.reuseIdentifier,
+                 withReuseIdentifier: SectionHeader.reuseIdentifier)
+        register(CompositionalCollectionCell.self,
+                 forCellWithReuseIdentifier: CompositionalCollectionCell.reuseIdentifier)
+        
+        makeDiffableDataSource(using: self)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func makeDiffableDataSource(using collectionView: UICollectionView) {
+        uiDataSource = UICollectionViewDiffableDataSource(collectionView: collectionView) { [weak self] collectionView, indexPath, itemIdentifier in
+            guard let self = self,
+                  let element = self.container.items[indexPath.section].asContainer?.items[indexPath.row].asElement,
+                  let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CompositionalCollectionCell.reuseIdentifier, for: indexPath) as? CompositionalCollectionCell else { return nil }
+            cell.containerViewController = self.compositionalSource?.containerViewController
+            cell.container = self.container.items[indexPath.section].asContainer
+            cell.configure(element: element)
+            return cell
+        }
+        uiDataSource?.supplementaryViewProvider = { view, kind, indexPath in
+            guard let header = collectionView.dequeueReusableSupplementaryView(ofKind: SectionHeader.reuseIdentifier, withReuseIdentifier: SectionHeader.reuseIdentifier, for: indexPath) as? SectionHeader,
+                  let container = self.container.items[indexPath.section].asContainer else { fatalError() }
+            
+            header.label.text = "\(String(describing: container.layoutStyle).capitalized) \(indexPath.section)"
+            return header
+        }
+    }
+    
+    func applySnapshot() {
+        var snapshot = NSDiffableDataSourceSnapshot<Container, Element>()
+        let containers = container.items.compactMap { $0.asContainer }
+        snapshot.appendSections(containers)
+        containers.forEach { container in
+            snapshot.appendItems(container.items.compactMap { $0.asElement }, toSection: container)
+        }
+        uiDataSource?.apply(snapshot)
+    }
+    
+}

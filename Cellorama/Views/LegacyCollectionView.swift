@@ -32,7 +32,7 @@ final class LegacyCollectionView: UICollectionView, UICollectionViewDelegateFlow
         delegate = source
         backgroundColor = .white
         
-        register(CollectionCell.self, forCellWithReuseIdentifier: CollectionCell.reuseIdentifier)
+        register(LegacyCollectionCell.self, forCellWithReuseIdentifier: LegacyCollectionCell.reuseIdentifier)
     }
     
     required init?(coder: NSCoder) {

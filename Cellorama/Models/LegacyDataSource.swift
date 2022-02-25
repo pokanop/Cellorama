@@ -36,8 +36,7 @@ class LegacyDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDe
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard numberOfItems > indexPath.item else { return UICollectionViewCell() }
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CollectionCell.reuseIdentifier, for: indexPath) as? CollectionCell else { return UICollectionViewCell() }
-        print("🦈 configuring \(items[indexPath.item].kind)")
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LegacyCollectionCell.reuseIdentifier, for: indexPath) as? LegacyCollectionCell else { return UICollectionViewCell() }
         cell.source = self
         cell.containerViewController = containerViewController
         cell.configure(item: items[indexPath.item], parent: container)

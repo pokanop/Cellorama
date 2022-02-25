@@ -1,5 +1,5 @@
 //
-//  CollectionCell.swift
+//  LegacyCollectionCell.swift
 //  Cellorama
 //
 //  Created by Sahel Jalal on 12/16/20.
@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CollectionCell: UICollectionViewCell, Reusable {
+final class LegacyCollectionCell: UICollectionViewCell, Reusable {
     
     weak var source: LegacyDataSource?
     weak var containerViewController: UIViewController?

@@ -10,13 +10,15 @@
 		97359F6A258B2F5000452290 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97359F69258B2F5000452290 /* ViewController.swift */; };
 		974FC0EB258ABB5A00513807 /* LegacyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EA258ABB5A00513807 /* LegacyDataSource.swift */; };
 		974FC0F0258ABCB300513807 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EF258ABCB300513807 /* Item.swift */; };
-		974FC0F5258ABD4E00513807 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0F4258ABD4E00513807 /* CollectionCell.swift */; };
+		974FC0F5258ABD4E00513807 /* LegacyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0F4258ABD4E00513807 /* LegacyCollectionCell.swift */; };
 		97583538258C8FD800CD5220 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97583537258C8FD800CD5220 /* TabBarViewController.swift */; };
 		97820187258AD962005D73A1 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97820186258AD962005D73A1 /* Reusable.swift */; };
 		97AF9D5627BEE1E700797110 /* CollectionViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5527BEE1E700797110 /* CollectionViewable.swift */; };
-		97AF9D5827BEE68E00797110 /* ComposableCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5727BEE68E00797110 /* ComposableCollectionView.swift */; };
+		97AF9D5827BEE68E00797110 /* CompositionalCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5727BEE68E00797110 /* CompositionalCollectionView.swift */; };
 		97AF9D5A27BEEC9300797110 /* CollectionSourceable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5927BEEC9300797110 /* CollectionSourceable.swift */; };
 		97AF9D5C27C05D8C00797110 /* SizeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5B27C05D8C00797110 /* SizeCache.swift */; };
+		97AF9D5E27C06EA600797110 /* CompositionalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5D27C06EA600797110 /* CompositionalDataSource.swift */; };
+		97AF9D6027C09B0D00797110 /* CompositionalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5F27C09B0D00797110 /* CompositionalCollectionCell.swift */; };
 		97C9F517258AB3DF0031C862 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9F516258AB3DF0031C862 /* View.swift */; };
 		97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */; };
 		97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */; };
@@ -60,13 +62,15 @@
 		97359F69258B2F5000452290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		974FC0EA258ABB5A00513807 /* LegacyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyDataSource.swift; sourceTree = "<group>"; };
 		974FC0EF258ABCB300513807 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		974FC0F4258ABD4E00513807 /* CollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
+		974FC0F4258ABD4E00513807 /* LegacyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyCollectionCell.swift; sourceTree = "<group>"; };
 		97583537258C8FD800CD5220 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		97820186258AD962005D73A1 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		97AF9D5527BEE1E700797110 /* CollectionViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewable.swift; sourceTree = "<group>"; };
-		97AF9D5727BEE68E00797110 /* ComposableCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComposableCollectionView.swift; sourceTree = "<group>"; };
+		97AF9D5727BEE68E00797110 /* CompositionalCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalCollectionView.swift; sourceTree = "<group>"; };
 		97AF9D5927BEEC9300797110 /* CollectionSourceable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSourceable.swift; sourceTree = "<group>"; };
 		97AF9D5B27C05D8C00797110 /* SizeCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCache.swift; sourceTree = "<group>"; };
+		97AF9D5D27C06EA600797110 /* CompositionalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalDataSource.swift; sourceTree = "<group>"; };
+		97AF9D5F27C09B0D00797110 /* CompositionalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalCollectionCell.swift; sourceTree = "<group>"; };
 		97C9F516258AB3DF0031C862 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		97EE80DD258AAF6500C6FE52 /* Cellorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -147,6 +151,7 @@
 		974FC101258ABFC000513807 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				97AF9D5D27C06EA600797110 /* CompositionalDataSource.swift */,
 				974FC0EF258ABCB300513807 /* Item.swift */,
 				974FC0EA258ABB5A00513807 /* LegacyDataSource.swift */,
 				97AF9D5B27C05D8C00797110 /* SizeCache.swift */,
@@ -157,7 +162,7 @@
 		97C9F50E258AB1770031C862 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				97AF9D5727BEE68E00797110 /* ComposableCollectionView.swift */,
+				97AF9D5727BEE68E00797110 /* CompositionalCollectionView.swift */,
 				97EE8113258AB08100C6FE52 /* LegacyCollectionView.swift */,
 				97C9F516258AB3DF0031C862 /* View.swift */,
 			);
@@ -167,7 +172,8 @@
 		97C9F50F258AB17F0031C862 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				974FC0F4258ABD4E00513807 /* CollectionCell.swift */,
+				97AF9D5F27C09B0D00797110 /* CompositionalCollectionCell.swift */,
+				974FC0F4258ABD4E00513807 /* LegacyCollectionCell.swift */,
 				97820186258AD962005D73A1 /* Reusable.swift */,
 			);
 			path = Cells;
@@ -495,19 +501,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				97AF9D5627BEE1E700797110 /* CollectionViewable.swift in Sources */,
+				97AF9D5E27C06EA600797110 /* CompositionalDataSource.swift in Sources */,
 				97AF9D5C27C05D8C00797110 /* SizeCache.swift in Sources */,
 				97820187258AD962005D73A1 /* Reusable.swift in Sources */,
 				974FC0EB258ABB5A00513807 /* LegacyDataSource.swift in Sources */,
 				97EE80E5258AAF6500C6FE52 /* TabViewController.swift in Sources */,
-				97AF9D5827BEE68E00797110 /* ComposableCollectionView.swift in Sources */,
+				97AF9D5827BEE68E00797110 /* CompositionalCollectionView.swift in Sources */,
 				97583538258C8FD800CD5220 /* TabBarViewController.swift in Sources */,
 				97C9F517258AB3DF0031C862 /* View.swift in Sources */,
 				974FC0F0258ABCB300513807 /* Item.swift in Sources */,
-				974FC0F5258ABD4E00513807 /* CollectionCell.swift in Sources */,
+				974FC0F5258ABD4E00513807 /* LegacyCollectionCell.swift in Sources */,
 				97AF9D5A27BEEC9300797110 /* CollectionSourceable.swift in Sources */,
 				97359F6A258B2F5000452290 /* ViewController.swift in Sources */,
 				97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */,
 				97EE8114258AB08100C6FE52 /* LegacyCollectionView.swift in Sources */,
+				97AF9D6027C09B0D00797110 /* CompositionalCollectionCell.swift in Sources */,
 				97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

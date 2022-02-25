@@ -44,7 +44,10 @@ final class TabViewController: UIViewController {
             }
         }
         
-        func source(count: Int, size: View.Size, controller: UIViewController) -> CollectionSourceable {
+        func source(count: Int,
+                    size: View.Size,
+                    controller: UIViewController,
+                    legacy: Bool = false) -> CollectionSourceable {
             var containers: [AnyItem]
             if self == .mixed {
                 var layout: LayoutStyle?
@@ -64,8 +67,13 @@ final class TabViewController: UIViewController {
             let container: Container = Container(layoutStyle: .zone,
                                                  items: containers,
                                                  isRoot: true)
-            return LegacyDataSource(container: container,
-                                    containerViewController: controller)
+            if legacy {
+                return LegacyDataSource(container: container,
+                                        containerViewController: controller)
+            } else {
+                return CompositionalDataSource(container: container,
+                                               containerViewController: controller)
+            }
         }
         
     }
@@ -87,19 +95,20 @@ final class TabViewController: UIViewController {
         }
     }
     
-    lazy var collectionView: CollectionView = {
-        let source = LegacyDataSource(container: Container(),
-                                      containerViewController: self)
-        let view = LegacyCollectionView(source: source)
-        return view
-    }()
-    
+    var collectionView: CollectionView!
     let style: Style
     let count: Int
+    
+    var legacy: Bool {
+        didSet {
+            setupCollectionView()
+        }
+    }
     
     init(style: Style, count: Int = 10) {
         self.style = style
         self.count = count
+        self.legacy = false
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -113,10 +122,8 @@ final class TabViewController: UIViewController {
         title = style.name
         
         view.backgroundColor = .white
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
+        
+        setupCollectionView()
         
         let leftItems: [UIBarButtonItem] = [
             UIBarButtonItem(image: Mode.small.image, style: .plain, target: self, action: #selector(oneSelected)),
@@ -133,19 +140,54 @@ final class TabViewController: UIViewController {
     }
     
     @objc func oneSelected() {
-        collectionView.source = style.source(count: count, size: .small, controller: self)
+        collectionView.source = style.source(count: count,
+                                             size: .small,
+                                             controller: self,
+                                             legacy: legacy)
     }
     
     @objc func twoSelected() {
-        collectionView.source = style.source(count: count, size: .medium, controller: self)
+        collectionView.source = style.source(count: count,
+                                             size: .medium,
+                                             controller: self,
+                                             legacy: legacy)
     }
     
     @objc func threeSelected() {
-        collectionView.source = style.source(count: count, size: .large, controller: self)
+        collectionView.source = style.source(count: count,
+                                             size: .large,
+                                             controller: self,
+                                             legacy: legacy)
     }
     
     @objc func fourSelected() {
-        collectionView.source = style.source(count: count, size: .xlarge, controller: self)
+        collectionView.source = style.source(count: count,
+                                             size: .xlarge,
+                                             controller: self,
+                                             legacy: legacy)
+    }
+    
+    private func setupCollectionView() {
+        if let collectionView = collectionView {
+            collectionView.removeFromSuperview()
+        }
+        
+        var view: CollectionView
+        if legacy {
+            let source = LegacyDataSource(container: Container(),
+                                          containerViewController: self)
+            view = LegacyCollectionView(source: source)
+        } else {
+            let source = CompositionalDataSource(container: Container(),
+                                                 containerViewController: self)
+            view = CompositionalCollectionView(source: source)
+        }
+        collectionView = view
+        
+        self.view.addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
 
 }
