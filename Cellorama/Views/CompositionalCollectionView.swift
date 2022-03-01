@@ -27,9 +27,10 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
             
             animationTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
                 guard let self = self else { return }
-                self.source.randomize(self.animationType.next)
-                self.applySnapshot()
+                
                 self.animationType = self.animationType.next
+                self.source.randomize(self.animationType)
+                self.applySnapshot()
             })
         }
     }
