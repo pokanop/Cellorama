@@ -10,7 +10,7 @@ import SnapKit
 
 final class TabViewController: UIViewController {
     
-    enum Style: Equatable {
+    enum Style: Hashable {
         
         case zone
         case grid(Int)
@@ -44,36 +44,41 @@ final class TabViewController: UIViewController {
             }
         }
         
-        func source(count: Int,
-                    size: View.Size,
-                    controller: UIViewController,
-                    legacy: Bool = false) -> CollectionSourceable {
+        static func == (lhs: Style, rhs: Style) -> Bool {
+            lhs.name == rhs.name
+        }
+        
+        func source(controller: UIViewController) -> CollectionSourceable {
             var containers: [AnyItem]
             if self == .mixed {
                 var layout: LayoutStyle?
-                switch size {
+                switch options.size {
                 case .small: layout = .zone
                 case .medium: layout = .grid(2)
                 case .large: layout = .carousel
                 default: break
                 }
-                containers = Cellorama.randomContainers(count: count,
-                                                        style: layout)
+                containers = randomContainers(count: options.sections,
+                                              style: layout)
             } else {
-                containers = Cellorama.containers(count: count,
+                containers = Cellorama.containers(count: options.sections,
                                                   style: layout,
-                                                  size: size)
+                                                  size: options.size)
             }
             let container: Container = Container(layoutStyle: .zone,
                                                  items: containers,
                                                  isRoot: true)
-            if legacy {
+            if options.isLegacy {
                 return LegacyDataSource(container: container,
                                         containerViewController: controller)
             } else {
                 return CompositionalDataSource(container: container,
                                                containerViewController: controller)
             }
+        }
+        
+        func hash(into hasher: inout Hasher) {
+            hasher.combine(name)
         }
         
     }
@@ -95,20 +100,13 @@ final class TabViewController: UIViewController {
         }
     }
     
+    lazy var optionsView: OptionsView = OptionsView(style: style)
     var collectionView: CollectionView!
     let style: Style
-    let count: Int
+    var optionsTopConstraint: Constraint?
     
-    var legacy: Bool {
-        didSet {
-            setupCollectionView()
-        }
-    }
-    
-    init(style: Style, count: Int = 10) {
+    init(style: Style) {
         self.style = style
-        self.count = count
-        self.legacy = false
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -119,52 +117,66 @@ final class TabViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        edgesForExtendedLayout = []
         title = style.name
-        
         view.backgroundColor = .white
         
+        options.updateHandler = { [weak self] option in
+            guard let self = self else { return }
+            switch option {
+            case .animate: self.collectionView.optionUpdated(.animate)
+            case .legacy: self.setupCollectionView()
+            case .sections: self.collectionView.optionUpdated(.sections)
+            case .items: self.collectionView.optionUpdated(.items)
+            case .size: self.collectionView.optionUpdated(.size)
+            case .columns: self.collectionView.optionUpdated(.columns)
+            }
+        }
+        
+        setupOptionsView()
         setupCollectionView()
+        collectionView.applyLayout()
         
-        let leftItems: [UIBarButtonItem] = [
-            UIBarButtonItem(image: Mode.small.image, style: .plain, target: self, action: #selector(oneSelected)),
-            UIBarButtonItem(image: Mode.medium.image, style: .plain, target: self, action: #selector(twoSelected))
-        ]
         let rightItems: [UIBarButtonItem] = [
-            UIBarButtonItem(image: Mode.xlarge.image, style: .plain, target: self, action: #selector(fourSelected)),
-            UIBarButtonItem(image: Mode.large.image, style: .plain, target: self, action: #selector(threeSelected))
+            UIBarButtonItem(image: UIImage(systemName: "gearshape.fill")!, style: .plain, target: self, action: #selector(optionsSelected)),
         ]
-        navigationItem.setLeftBarButtonItems(leftItems, animated: true)
         navigationItem.setRightBarButtonItems(rightItems, animated: true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        oneSelected()
+        updateOptionsTopConstraint(animated: false)
     }
     
-    @objc func oneSelected() {
-        collectionView.source = style.source(count: count,
-                                             size: .small,
-                                             controller: self,
-                                             legacy: legacy)
+    @objc func optionsSelected() {
+        optionsView.visible.toggle()
+        updateOptionsTopConstraint()
     }
     
-    @objc func twoSelected() {
-        collectionView.source = style.source(count: count,
-                                             size: .medium,
-                                             controller: self,
-                                             legacy: legacy)
+    private func updateSource() {
+        collectionView.source = style.source(controller: self)
+        collectionView.applyLayout()
+        collectionView.applySnapshot()
     }
     
-    @objc func threeSelected() {
-        collectionView.source = style.source(count: count,
-                                             size: .large,
-                                             controller: self,
-                                             legacy: legacy)
+    private func updateOptionsTopConstraint(animated: Bool = true) {
+        self.optionsTopConstraint?.update(offset: self.optionsView.visible ? 0 : -self.optionsView.frame.height)
+        
+        guard animated else { return }
+        
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.view.layoutIfNeeded()
+        }
+
     }
     
-    @objc func fourSelected() {
-        collectionView.source = style.source(count: count,
-                                             size: .xlarge,
-                                             controller: self,
-                                             legacy: legacy)
+    private func setupOptionsView() {
+        self.view.addSubview(optionsView)
+        optionsView.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            optionsTopConstraint = make.top.equalToSuperview().constraint
+        }
     }
     
     private func setupCollectionView() {
@@ -173,7 +185,7 @@ final class TabViewController: UIViewController {
         }
         
         var view: CollectionView
-        if legacy {
+        if options.isLegacy {
             let source = LegacyDataSource(container: Container(),
                                           containerViewController: self)
             view = LegacyCollectionView(source: source)
@@ -186,8 +198,13 @@ final class TabViewController: UIViewController {
         
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.leading.trailing.bottom.equalToSuperview()
+            make.top.equalTo(optionsView.snp.bottom)
         }
+        
+        updateSource()
     }
 
 }
+
+var currentTabStyle: TabViewController.Style = .zone

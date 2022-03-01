@@ -29,6 +29,26 @@ final class TabBarViewController: UITabBarController {
         }
         
         setViewControllers(navs, animated: true)
+        delegate = self
+        
+        UITabBar.appearance().backgroundColor = .white
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .white
+        navs.forEach { nav in
+            nav.navigationBar.standardAppearance = appearance
+            nav.navigationBar.scrollEdgeAppearance = appearance
+        }
+    }
+    
+}
+
+extension TabBarViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+        guard let tabViewController = (viewController as? UINavigationController)?.viewControllers[0] as? TabViewController else { return }
+        
+        currentTabStyle = tabViewController.style
     }
     
 }

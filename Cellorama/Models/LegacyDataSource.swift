@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LegacyDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, CollectionSourceable {
+final class LegacyDataSource: NSObject, UICollectionViewDataSource, UICollectionViewDelegate, CollectionSourceable {
     
     lazy var layout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()

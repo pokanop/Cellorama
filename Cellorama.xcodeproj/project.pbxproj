@@ -19,6 +19,7 @@
 		97AF9D5C27C05D8C00797110 /* SizeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5B27C05D8C00797110 /* SizeCache.swift */; };
 		97AF9D5E27C06EA600797110 /* CompositionalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5D27C06EA600797110 /* CompositionalDataSource.swift */; };
 		97AF9D6027C09B0D00797110 /* CompositionalCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5F27C09B0D00797110 /* CompositionalCollectionCell.swift */; };
+		97B1603B27C8A70D00938AF9 /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B1603A27C8A70D00938AF9 /* OptionsView.swift */; };
 		97C9F517258AB3DF0031C862 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97C9F516258AB3DF0031C862 /* View.swift */; };
 		97EE80E1258AAF6500C6FE52 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */; };
 		97EE80E3258AAF6500C6FE52 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97EE80E2258AAF6500C6FE52 /* SceneDelegate.swift */; };
@@ -71,6 +72,7 @@
 		97AF9D5B27C05D8C00797110 /* SizeCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeCache.swift; sourceTree = "<group>"; };
 		97AF9D5D27C06EA600797110 /* CompositionalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalDataSource.swift; sourceTree = "<group>"; };
 		97AF9D5F27C09B0D00797110 /* CompositionalCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompositionalCollectionCell.swift; sourceTree = "<group>"; };
+		97B1603A27C8A70D00938AF9 /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		97C9F516258AB3DF0031C862 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		97EE80DD258AAF6500C6FE52 /* Cellorama.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cellorama.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		97EE80E0258AAF6500C6FE52 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 				97AF9D5727BEE68E00797110 /* CompositionalCollectionView.swift */,
 				97EE8113258AB08100C6FE52 /* LegacyCollectionView.swift */,
 				97C9F516258AB3DF0031C862 /* View.swift */,
+				97B1603A27C8A70D00938AF9 /* OptionsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 				97AF9D5627BEE1E700797110 /* CollectionViewable.swift in Sources */,
 				97AF9D5E27C06EA600797110 /* CompositionalDataSource.swift in Sources */,
 				97AF9D5C27C05D8C00797110 /* SizeCache.swift in Sources */,
+				97B1603B27C8A70D00938AF9 /* OptionsView.swift in Sources */,
 				97820187258AD962005D73A1 /* Reusable.swift in Sources */,
 				974FC0EB258ABB5A00513807 /* LegacyDataSource.swift in Sources */,
 				97EE80E5258AAF6500C6FE52 /* TabViewController.swift in Sources */,

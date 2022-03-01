@@ -15,6 +15,10 @@ protocol CollectionViewable {
     var source: CollectionSourceable { get set }
     var container: Container { get }
     
+    func applyLayout()
+    func applySnapshot()
+    func optionUpdated(_ kind: Options.Kind)
+    
 }
 
 extension CollectionViewable {

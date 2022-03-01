@@ -10,16 +10,26 @@ import UIKit
 
 final class CompositionalCollectionView: UICollectionView, CollectionViewable {
     
-    var source: CollectionSourceable {
-        didSet {
-            setCollectionViewLayout(source.layout, animated: true)
-            applySnapshot()
-        }
-    }
+    var source: CollectionSourceable
     
     private var compositionalSource: CompositionalDataSource? { source as? CompositionalDataSource }
     
     private var uiDataSource: UICollectionViewDiffableDataSource<Container, Element>?
+    
+    private var animationTimer: Timer? = nil
+    private var animate: Bool = false {
+        didSet {
+            guard animate else {
+                animationTimer?.invalidate()
+                return
+            }
+            
+            animationTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
+                self?.source.randomize()
+                self?.applySnapshot()
+            })
+        }
+    }
     
     init(source: CollectionSourceable) {
         self.source = source
@@ -59,6 +69,17 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
         }
     }
     
+    func invalidateLayout() {
+        collectionViewLayout.invalidateLayout()
+        UIView.animate(withDuration: 0.3, delay: 0) {
+            self.layoutIfNeeded()
+        }
+    }
+    
+    func applyLayout() {
+        setCollectionViewLayout(source.layout, animated: true)
+    }
+    
     func applySnapshot() {
         var snapshot = NSDiffableDataSourceSnapshot<Container, Element>()
         let containers = container.items.compactMap { $0.asContainer }
@@ -67,6 +88,28 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
             snapshot.appendItems(container.items.compactMap { $0.asElement }, toSection: container)
         }
         uiDataSource?.apply(snapshot)
+    }
+    
+    func optionUpdated(_ kind: Options.Kind) {
+        switch kind {
+        case .animate:
+            animate = options.animate
+            applySnapshot()
+        case .sections:
+            source.updateSectionCount(options.sections)
+            applySnapshot()
+        case .items:
+            source.updateItemCount(options.items)
+            applySnapshot()
+        case .size:
+            source.updateSize(options.size)
+            applySnapshot()
+        case .columns:
+            source.updateColumnCount(options.columns)
+            invalidateLayout()
+        default:
+            return
+        }
     }
     
 }

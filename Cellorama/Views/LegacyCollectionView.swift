@@ -39,4 +39,8 @@ final class LegacyCollectionView: UICollectionView, UICollectionViewDelegateFlow
         fatalError("init(coder:) has not been implemented")
     }
     
+    func applyLayout() {}
+    func applySnapshot() {}
+    func optionUpdated(_ kind: Options.Kind) {}
+    
 }

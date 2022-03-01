@@ -9,7 +9,7 @@ import UIKit
 
 class View: UIView {
     
-    enum Size: CaseIterable {
+    enum Size: RawRepresentable, CaseIterable {
         case small
         case medium
         case large
@@ -17,6 +17,37 @@ class View: UIView {
         case dynamic
         
         static var random: Size { [.small, .medium, .large, .xlarge].randomElement()! }
+        
+        var name: String {
+            switch self {
+            case .small: return "sm"
+            case .medium: return "md"
+            case .large: return "lg"
+            case .xlarge: return "xl"
+            case .dynamic: return "dy"
+            }
+        }
+        
+        var rawValue: Int {
+            switch self {
+            case .small: return 0
+            case .medium: return 1
+            case .large: return 2
+            case .xlarge: return 3
+            case .dynamic: return 4
+            }
+        }
+        
+        init?(rawValue: Int) {
+            switch rawValue {
+            case 0: self = .small
+            case 1: self = .medium
+            case 2: self = .large
+            case 3: self = .xlarge
+            case 4: self = .dynamic
+            default: return nil
+            }
+        }
         
         func configure(_ view: View) {
             switch self {

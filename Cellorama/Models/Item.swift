@@ -14,13 +14,21 @@ enum ItemKind: CaseIterable {
     
 }
 
-enum LayoutStyle: CaseIterable, Equatable {
+enum LayoutStyle: CaseIterable, CustomStringConvertible, Equatable {
     
     case zone
     case grid(Int)
     case carousel
     
-    static var allCases: [LayoutStyle] { [.zone, .grid(2), .carousel] }
+    static var allCases: [LayoutStyle] { [.zone, .grid(Int.random(in: 1...5)), .carousel] }
+    
+    var description: String {
+        switch self {
+        case .zone: return "zone"
+        case .grid: return "grid"
+        case .carousel: return "carousel"
+        }
+    }
     
 }
 
@@ -173,7 +181,7 @@ func randomElements(count: Int) -> [AnyItem] {
 
 func randomContainers(count: Int, style: LayoutStyle?) -> [AnyItem] {
     (0..<count).map { _ in AnyItem(Container(layoutStyle: style ?? .random,
-                                             items: randomElements(count: count))) }
+                                             items: randomElements(count: options.items))) }
 }
 
 func randomItems(count: Int, depth: Int = 0) -> [AnyItem] {
@@ -200,5 +208,5 @@ func elements(count: Int, size: View.Size) -> [AnyItem] {
 
 func containers(count: Int, style: LayoutStyle, size: View.Size) -> [AnyItem] {
     (0..<count).map { _ in AnyItem(Container(layoutStyle: style,
-                                             items: elements(count: count, size: size))) }
+                                             items: elements(count: options.items, size: size))) }
 }
