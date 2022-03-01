@@ -8,6 +8,22 @@
 import Foundation
 import UIKit
 
+enum AnimationType: Int, RawRepresentable {
+    
+    case moveItems
+    case insertItems
+    case deleteItems
+    case moveSections
+    case insertSections
+    case deleteSections
+    case all
+    
+    var next: AnimationType {
+        AnimationType(rawValue: rawValue + 1) ?? AnimationType(rawValue: 0)!
+    }
+    
+}
+
 protocol CollectionSourceable {
     
     var layout: UICollectionViewLayout { get }
@@ -48,8 +64,8 @@ extension CollectionSourceable {
         container.updateColumnCount(count)
     }
     
-    mutating func randomize() {
-        container.randomize()
+    mutating func randomize(_ animationType: AnimationType) {
+        container.randomize(animationType)
     }
     
 }
@@ -110,26 +126,59 @@ private extension Container {
         self.items = items
     }
     
-    mutating func randomize() {
+    mutating func randomize(_ animationType: AnimationType) {
         var items: [AnyItem] = []
         self.items.forEach { item in
             if var item = item.asContainer {
-                item.randomize()
+                item.randomize(animationType)
                 items.append(AnyItem(item))
             } else if var item = item.asElement {
-                item.randomize()
+                item.randomize(animationType)
                 items.append(AnyItem(item))
             }
         }
         
-        self.items = isRoot ? items : items.shuffled()
+        switch animationType {
+        case .moveItems:
+            self.items = isRoot ? items : items.shuffled()
+        case .insertItems:
+            if !isRoot {
+                elements(count: Int.random(in: 1...5), size: options.size).forEach { element in
+                    items.insert(element, at: Int.random(in: 0...items.count - 1))
+                }
+            }
+            self.items = items
+        case .deleteItems:
+            if !isRoot {
+                (1...items.count / 2).forEach { _ in items.remove(at: Int.random(in: 0...items.count - 1)) }
+            }
+            self.items = items
+        case .moveSections:
+            self.items = isRoot ? items.shuffled() : items
+        case .insertSections:
+            if isRoot {
+                containers(count: Int.random(in: 1...5),
+                           style: currentTabStyle.layout,
+                           size: options.size).forEach { container in
+                    items.insert(container, at: Int.random(in: 0...items.count - 1))
+                }
+            }
+            self.items = items
+        case .deleteSections:
+            if isRoot {
+                (1...items.count / 2).forEach { _ in items.remove(at: Int.random(in: 0...items.count - 1)) }
+            }
+            self.items = items
+        case .all:
+            break
+        }
     }
     
 }
 
 private extension Element {
     
-    mutating func randomize() {
+    mutating func randomize(_ animationType: AnimationType) {
         
     }
     

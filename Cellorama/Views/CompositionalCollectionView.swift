@@ -16,6 +16,7 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
     
     private var uiDataSource: UICollectionViewDiffableDataSource<Container, Element>?
     
+    private var animationType: AnimationType = .moveItems
     private var animationTimer: Timer? = nil
     private var animate: Bool = false {
         didSet {
@@ -24,9 +25,11 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
                 return
             }
             
-            animationTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { [weak self] _ in
-                self?.source.randomize()
-                self?.applySnapshot()
+            animationTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
+                guard let self = self else { return }
+                self.source.randomize(self.animationType.next)
+                self.applySnapshot()
+                self.animationType = self.animationType.next
             })
         }
     }

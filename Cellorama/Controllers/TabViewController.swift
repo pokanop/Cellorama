@@ -102,7 +102,7 @@ final class TabViewController: UIViewController {
     
     lazy var optionsView: OptionsView = OptionsView(style: style)
     var collectionView: CollectionView!
-    let style: Style
+    var style: Style
     var optionsTopConstraint: Constraint?
     
     init(style: Style) {
@@ -123,13 +123,19 @@ final class TabViewController: UIViewController {
         
         options.updateHandler = { [weak self] option in
             guard let self = self else { return }
+            
             switch option {
             case .animate: self.collectionView.optionUpdated(.animate)
             case .legacy: self.setupCollectionView()
             case .sections: self.collectionView.optionUpdated(.sections)
             case .items: self.collectionView.optionUpdated(.items)
             case .size: self.collectionView.optionUpdated(.size)
-            case .columns: self.collectionView.optionUpdated(.columns)
+            case .columns:
+                self.collectionView.optionUpdated(.columns)
+                if case .grid = self.style {
+                    self.style = .grid(options.columns)
+                    currentTabStyle = self.style
+                }
             }
         }
         
