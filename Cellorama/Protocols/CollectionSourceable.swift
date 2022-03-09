@@ -64,8 +64,8 @@ extension CollectionSourceable {
         container.updateColumnCount(count)
     }
     
-    mutating func randomize(_ animationType: AnimationType) {
-        container.randomize(animationType)
+    mutating func randomize(_ animationType: AnimationType, transitionContainers: Bool = false) {
+        container.randomize(animationType, transitionContainers: transitionContainers)
     }
     
 }
@@ -126,7 +126,7 @@ private extension Container {
         self.items = items
     }
     
-    mutating func randomize(_ animationType: AnimationType) {
+    mutating func randomize(_ animationType: AnimationType, transitionContainers: Bool = false) {
         var items: [AnyItem] = []
         self.items.forEach { item in
             if var item = item.asContainer {
@@ -171,6 +171,18 @@ private extension Container {
             self.items = items
         case .all:
             break
+        }
+        
+        if transitionContainers {
+            for (index, item) in items.enumerated() {
+                guard Bool.random(),
+                      var item = item.asContainer else { continue }
+                
+                item.layoutStyle = .random
+                items.remove(at: index)
+                items.insert(AnyItem(item), at: index)
+            }
+            self.items = items
         }
     }
     

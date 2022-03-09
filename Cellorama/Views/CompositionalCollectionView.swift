@@ -29,7 +29,11 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
                 guard let self = self else { return }
                 
                 self.animationType = self.animationType.next
-                self.source.randomize(self.animationType)
+                if options.transitions {
+                    self.invalidateLayout()
+                }
+                self.source.randomize(self.animationType,
+                                      transitionContainers: options.transitions)
                 self.applySnapshot()
             })
         }
@@ -98,7 +102,6 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
         switch kind {
         case .animate:
             animate = options.animate
-            applySnapshot()
         case .sections:
             source.updateSectionCount(options.sections)
             applySnapshot()

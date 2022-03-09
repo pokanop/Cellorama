@@ -14,7 +14,7 @@ enum ItemKind: CaseIterable {
     
 }
 
-enum LayoutStyle: CaseIterable, CustomStringConvertible, Equatable {
+enum LayoutStyle: CaseIterable, CustomStringConvertible, Hashable {
     
     case zone
     case grid(Int)
@@ -54,6 +54,7 @@ extension Item {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(identifier)
+        hasher.combine(kind)
     }
     
 }
@@ -63,6 +64,7 @@ private protocol _AnyItemBox {
     var _base: Any { get }
     var _identifier: UUID { get }
     var _kind: ItemKind { get }
+    var _layoutStyle: LayoutStyle? { get }
     var _asContainer: Container? { get }
     var _asElement: Element? { get }
     
@@ -77,6 +79,7 @@ private struct _ConcreteItemBox<T: Item>: _AnyItemBox {
     var _base: Any { _baseItem }
     var _identifier: UUID { _baseItem.identifier }
     var _kind: ItemKind { _baseItem.kind }
+    var _layoutStyle: LayoutStyle? { _asContainer?.layoutStyle }
     var _asContainer: Container? { _baseItem as? Container }
     var _asElement: Element? { _baseItem as? Element }
     
@@ -100,6 +103,7 @@ struct AnyItem: Item {
     private var _box: _AnyItemBox
     var identifier: UUID { _box._identifier }
     var kind: ItemKind { _box._kind }
+    var layoutStyle: LayoutStyle? { _box._layoutStyle }
     var asContainer: Container? { _box._asContainer }
     var asElement: Element? { _box._asElement }
     
@@ -113,6 +117,10 @@ struct AnyItem: Item {
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(_box._identifier)
+        hasher.combine(_box._kind)
+        if let layoutStyle = _box._layoutStyle {
+            hasher.combine(layoutStyle)
+        }
     }
     
 }
@@ -136,7 +144,9 @@ struct Container: Item {
     }
     
     static func == (lhs: Container, rhs: Container) -> Bool {
-        lhs.identifier == rhs.identifier
+        lhs.identifier == rhs.identifier &&
+        lhs.kind == rhs.kind &&
+        lhs.layoutStyle == rhs.layoutStyle
     }
     
     func maxWidth(for bounds: CGRect) -> CGFloat {

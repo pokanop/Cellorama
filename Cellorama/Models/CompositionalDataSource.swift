@@ -46,7 +46,6 @@ final class CompositionalDataSource: CollectionSourceable {
         self.container = container
         self.containerViewController = containerViewController
         
-        layout.register(SectionHeader.self, forDecorationViewOfKind: SectionHeader.reuseIdentifier)
         layout.register(SectionDecoration.self, forDecorationViewOfKind: SectionDecoration.reuseIdentifier)
     }
     

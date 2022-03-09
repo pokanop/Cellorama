@@ -126,6 +126,7 @@ final class TabViewController: UIViewController {
             
             switch option {
             case .animate: self.collectionView.optionUpdated(.animate)
+            case .transitions: self.collectionView.optionUpdated(.transitions)
             case .legacy: self.setupCollectionView()
             case .sections: self.collectionView.optionUpdated(.sections)
             case .items: self.collectionView.optionUpdated(.items)

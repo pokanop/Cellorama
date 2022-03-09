@@ -12,6 +12,7 @@ final class Options {
     enum Kind: CaseIterable {
     
         case animate
+        case transitions
         case legacy
         case sections
         case items
@@ -23,6 +24,7 @@ final class Options {
             label.font = .preferredFont(forTextStyle: .callout)
             switch self {
             case .animate: label.text = "Animate"
+            case .transitions: label.text = "Transitions"
             case .legacy: label.text = "Legacy layout"
             case .sections: label.text = "Section count"
             case .items: label.text = "Item count"
@@ -39,6 +41,11 @@ final class Options {
                 let item = UISwitch()
                 item.isOn = options.animate
                 item.addTarget(options, action: #selector(animateChanged), for: .valueChanged)
+                view = item
+            case .transitions:
+                let item = UISwitch()
+                item.isOn = options.animate
+                item.addTarget(options, action: #selector(transitionsChanged), for: .valueChanged)
                 view = item
             case .legacy:
                 let item = UISwitch()
@@ -80,6 +87,7 @@ final class Options {
     }
     
     var animate: Bool = false { didSet { updateHandler?(.animate) } }
+    var transitions: Bool = false { didSet { updateHandler?(.transitions) } }
     var isLegacy: Bool = false { didSet { updateHandler?(.legacy) } }
     var sections: Int = 10 { didSet { updateHandler?(.sections) } }
     var items: Int = 20 { didSet { updateHandler?(.items) } }
@@ -90,6 +98,10 @@ final class Options {
     
     @objc private func animateChanged(toggle: UISwitch) {
         animate = toggle.isOn
+    }
+    
+    @objc private func transitionsChanged(toggle: UISwitch) {
+        transitions = toggle.isOn
     }
     
     @objc private func legacyChanged(toggle: UISwitch) {
