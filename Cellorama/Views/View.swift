@@ -94,7 +94,8 @@ class View: UIView {
         backgroundColor = element.color
         size = element.size
         
-        applyCorner(to: layer)
+        applyCorner()
+        applyShadow()
         addSubview(label)
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -106,6 +107,12 @@ class View: UIView {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        optimizeShadow()
     }
     
 }
@@ -129,6 +136,17 @@ extension UIView {
         layer.shadowOpacity = 0.2
         layer.shadowOffset = .zero
         layer.shadowRadius = 5
+    }
+    
+    func optimizeShadow(on layer: CALayer? = nil) {
+        let layer = layer ?? self.layer
+        
+        if layer.cornerRadius > 0 {
+            layer.shadowPath = UIBezierPath(roundedRect: bounds,
+                                            cornerRadius: layer.cornerRadius).cgPath
+        } else {
+            layer.shadowPath = UIBezierPath(rect: bounds).cgPath
+        }
     }
 
 }

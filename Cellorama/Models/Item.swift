@@ -19,14 +19,18 @@ enum LayoutStyle: CaseIterable, CustomStringConvertible, Hashable {
     case zone
     case grid(Int)
     case carousel
+    case stack
+    case tab
     
-    static var allCases: [LayoutStyle] { [.zone, .grid(Int.random(in: 1...5)), .carousel] }
+    static var allCases: [LayoutStyle] { [.zone, .grid(Int.random(in: 1...5)), .carousel, stack, tab] }
     
     var description: String {
         switch self {
         case .zone: return "zone"
         case .grid: return "grid"
         case .carousel: return "carousel"
+        case .stack: return "stack"
+        case .tab: return "tab"
         }
     }
     
@@ -137,6 +141,10 @@ struct Container: Item {
     var isZone: Bool { layoutStyle == .zone }
     var isGrid: Bool { if case .grid(_) = layoutStyle { return true } else { return false } }
     var isCarousel: Bool { layoutStyle == .carousel }
+    var isStack: Bool { layoutStyle == .stack }
+    var isTab: Bool { layoutStyle == .tab }
+    
+    var selectedIndex: Int = 0
     
     var itemsPerRow: CGFloat {
         guard case .grid(let items) = layoutStyle else { return 1.0 }
@@ -201,10 +209,10 @@ func randomItems(count: Int, depth: Int = 0) -> [AnyItem] {
             items.append(AnyItem(Element()))
         } else {
             if depth > 2 {
-                items.append(AnyItem(Container(items: randomElements(count: (5...20).randomElement()!))))
+                items.append(AnyItem(Container(items: randomElements(count: Int.random(in: 5...20)))))
             } else {
                 items.append(AnyItem(Container(layoutStyle: .random,
-                                               items: randomItems(count: (1...3).randomElement()!,
+                                               items: randomItems(count: Int.random(in: 1...3),
                                                    depth: depth + 1))))
             }
         }

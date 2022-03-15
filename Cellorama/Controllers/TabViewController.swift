@@ -15,6 +15,8 @@ final class TabViewController: UIViewController {
         case zone
         case grid(Int)
         case carousel
+        case stack
+        case tab
         case mixed
         
         var layout: LayoutStyle {
@@ -22,16 +24,16 @@ final class TabViewController: UIViewController {
             case .zone: return .zone
             case .grid(let items): return .grid(items)
             case .carousel: return .carousel
+            case .stack: return .stack
+            case .tab: return .tab
             case .mixed: return .random
             }
         }
         
         var name: String {
             switch self {
-            case .zone: return "Zone"
-            case .grid: return "Grid"
-            case .carousel: return "Carousel"
             case .mixed: return "Random"
+            default: return layout.description.capitalized
             }
         }
         
@@ -40,6 +42,8 @@ final class TabViewController: UIViewController {
             case .zone: return UIImage(systemName: "rectangle.grid.1x2.fill")!
             case .grid: return UIImage(systemName: "square.grid.2x2.fill")!
             case .carousel: return UIImage(systemName: "rectangle.split.3x1.fill")!
+            case .stack: return UIImage(systemName: "rectangle.stack.fill")!
+            case .tab: return UIImage(systemName: "rectangle.lefthalf.filled")!
             case .mixed: return UIImage(systemName: "rectangle.3.offgrid.fill")!
             }
         }

@@ -135,6 +135,8 @@ var optionsMap: [TabViewController.Style: Options] = [
     .zone: Options(),
     .grid(0): Options(),
     .carousel: Options(),
+    .stack: Options(),
+    .tab: Options(),
     .mixed: Options()
 ]
 

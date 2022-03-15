@@ -15,12 +15,16 @@ final class TabBarViewController: UITabBarController {
         let zonesController = TabViewController(style: .zone)
         let gridController = TabViewController(style: .grid(2))
         let carouselController = TabViewController(style: .carousel)
-        let mixedController = TabViewController(style: .mixed)
+        let stackController = TabViewController(style: .stack)
+        let tabController = TabViewController(style: .tab)
+//        let mixedController = TabViewController(style: .mixed)
         
         let tabs = [zonesController,
                     gridController,
                     carouselController,
-                    mixedController]
+                    stackController,
+                    tabController]
+//                    mixedController]
         let navs = tabs.map { UINavigationController(rootViewController: $0) }
         tabs.forEach { tab in
             tab.tabBarItem = UITabBarItem(title: tab.style.name,
@@ -39,6 +43,9 @@ final class TabBarViewController: UITabBarController {
             nav.navigationBar.standardAppearance = appearance
             nav.navigationBar.scrollEdgeAppearance = appearance
         }
+        
+        optionsMap[.stack]?.size = .dynamic
+        optionsMap[.tab]?.size = .dynamic
     }
     
 }

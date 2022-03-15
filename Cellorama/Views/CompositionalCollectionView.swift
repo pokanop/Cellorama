@@ -73,6 +73,16 @@ final class CompositionalCollectionView: UICollectionView, CollectionViewable {
                   let container = self.container.items[indexPath.section].asContainer else { fatalError() }
             
             header.label.text = "\(String(describing: container.layoutStyle).capitalized) \(indexPath.section)"
+            header.isTabHeader = container.isTab
+            if container.isTab {
+                header.setSegments(segments: ["One", "Two", "Three"])
+                header.selectionAction = { selectedIndex in
+//                    self.container.updateTabIndex(selectedIndex, at: indexPath)
+                    let invalidationContext = UICollectionViewLayoutInvalidationContext()
+                    invalidationContext.invalidateItems(at: [indexPath])
+                    self.collectionViewLayout.invalidateLayout(with: invalidationContext)
+                }
+            }
             return header
         }
     }
