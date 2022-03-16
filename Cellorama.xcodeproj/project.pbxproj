@@ -11,6 +11,11 @@
 		974FC0EB258ABB5A00513807 /* LegacyDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EA258ABB5A00513807 /* LegacyDataSource.swift */; };
 		974FC0F0258ABCB300513807 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0EF258ABCB300513807 /* Item.swift */; };
 		974FC0F5258ABD4E00513807 /* LegacyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 974FC0F4258ABD4E00513807 /* LegacyCollectionCell.swift */; };
+		97503BC027E1A3160071E929 /* stacks.png in Resources */ = {isa = PBXBuildFile; fileRef = 97503BBB27E1A3160071E929 /* stacks.png */; };
+		97503BC127E1A3160071E929 /* zones.png in Resources */ = {isa = PBXBuildFile; fileRef = 97503BBC27E1A3160071E929 /* zones.png */; };
+		97503BC227E1A3160071E929 /* carousels.png in Resources */ = {isa = PBXBuildFile; fileRef = 97503BBD27E1A3160071E929 /* carousels.png */; };
+		97503BC327E1A3160071E929 /* tabs.png in Resources */ = {isa = PBXBuildFile; fileRef = 97503BBE27E1A3160071E929 /* tabs.png */; };
+		97503BC427E1A3160071E929 /* grids.png in Resources */ = {isa = PBXBuildFile; fileRef = 97503BBF27E1A3160071E929 /* grids.png */; };
 		97583538258C8FD800CD5220 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97583537258C8FD800CD5220 /* TabBarViewController.swift */; };
 		97820187258AD962005D73A1 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97820186258AD962005D73A1 /* Reusable.swift */; };
 		97AF9D5627BEE1E700797110 /* CollectionViewable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97AF9D5527BEE1E700797110 /* CollectionViewable.swift */; };
@@ -58,12 +63,16 @@
 		421AD5DA7587B11E6058ED79 /* Pods-Cellorama.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Cellorama.debug.xcconfig"; path = "Target Support Files/Pods-Cellorama/Pods-Cellorama.debug.xcconfig"; sourceTree = "<group>"; };
 		65B1CF9FC6B7384A6292E1C7 /* Pods-CelloramaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CelloramaTests.release.xcconfig"; path = "Target Support Files/Pods-CelloramaTests/Pods-CelloramaTests.release.xcconfig"; sourceTree = "<group>"; };
 		93078C692283326CE98C5723 /* Pods_Cellorama.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Cellorama.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		970B6044258D8EE9008A4138 /* app.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = app.png; sourceTree = "<group>"; };
 		970B6045258D8EE9008A4138 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		97359F69258B2F5000452290 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		974FC0EA258ABB5A00513807 /* LegacyDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyDataSource.swift; sourceTree = "<group>"; };
 		974FC0EF258ABCB300513807 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		974FC0F4258ABD4E00513807 /* LegacyCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyCollectionCell.swift; sourceTree = "<group>"; };
+		97503BBB27E1A3160071E929 /* stacks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stacks.png; sourceTree = "<group>"; };
+		97503BBC27E1A3160071E929 /* zones.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = zones.png; sourceTree = "<group>"; };
+		97503BBD27E1A3160071E929 /* carousels.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = carousels.png; sourceTree = "<group>"; };
+		97503BBE27E1A3160071E929 /* tabs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tabs.png; sourceTree = "<group>"; };
+		97503BBF27E1A3160071E929 /* grids.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grids.png; sourceTree = "<group>"; };
 		97583537258C8FD800CD5220 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		97820186258AD962005D73A1 /* Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
 		97AF9D5527BEE1E700797110 /* CollectionViewable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewable.swift; sourceTree = "<group>"; };
@@ -136,7 +145,11 @@
 		970B6043258D8EE9008A4138 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				970B6044258D8EE9008A4138 /* app.png */,
+				97503BBD27E1A3160071E929 /* carousels.png */,
+				97503BBF27E1A3160071E929 /* grids.png */,
+				97503BBB27E1A3160071E929 /* stacks.png */,
+				97503BBE27E1A3160071E929 /* tabs.png */,
+				97503BBC27E1A3160071E929 /* zones.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -373,8 +386,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97503BC327E1A3160071E929 /* tabs.png in Resources */,
 				97EE80ED258AAF6600C6FE52 /* LaunchScreen.storyboard in Resources */,
 				97EE80EA258AAF6600C6FE52 /* Assets.xcassets in Resources */,
+				97503BC127E1A3160071E929 /* zones.png in Resources */,
+				97503BC227E1A3160071E929 /* carousels.png in Resources */,
+				97503BC427E1A3160071E929 /* grids.png in Resources */,
+				97503BC027E1A3160071E929 /* stacks.png in Resources */,
 				97EE80E8258AAF6500C6FE52 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
