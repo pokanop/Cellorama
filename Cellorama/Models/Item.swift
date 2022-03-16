@@ -144,7 +144,9 @@ struct Container: Item {
     var isStack: Bool { layoutStyle == .stack }
     var isTab: Bool { layoutStyle == .tab }
     
-    var selectedIndex: Int = 0
+    let segments = Array(["One", "Two", "Three", "Four"].dropLast(Int.random(in: 0...2)))
+    var segmentCount: Int { segments.count }
+    var segmentIndex: Int = 0
     
     var itemsPerRow: CGFloat {
         guard case .grid(let items) = layoutStyle else { return 1.0 }
@@ -182,6 +184,7 @@ struct Element: Item {
     var data: String = randomEmoji()
     var size: View.Size = .random
     var color: UIColor = randomColor()
+    let heightInTab: CGFloat = CGFloat.random(in: 50...200)
     
 }
 

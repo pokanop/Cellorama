@@ -58,7 +58,7 @@ final class TabViewController: UIViewController {
                 var layout: LayoutStyle?
                 switch options.size {
                 case .small: layout = .zone
-                case .medium: layout = .grid(2)
+                case .medium: layout = .grid(options.columns)
                 case .large: layout = .carousel
                 default: break
                 }
@@ -107,7 +107,8 @@ final class TabViewController: UIViewController {
     lazy var optionsView: OptionsView = OptionsView(style: style)
     var collectionView: CollectionView!
     var style: Style
-    var optionsTopConstraint: Constraint?
+    var collectionTopConstraint: Constraint?
+    var optionsTopContraint: Constraint?
     
     init(style: Style) {
         self.style = style
@@ -154,15 +155,15 @@ final class TabViewController: UIViewController {
         navigationItem.setRightBarButtonItems(rightItems, animated: true)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        updateOptionsTopConstraint(animated: false)
+        updateTopConstraints(animated: false)
     }
     
     @objc func optionsSelected() {
         optionsView.visible.toggle()
-        updateOptionsTopConstraint()
+        updateTopConstraints()
     }
     
     private func updateSource() {
@@ -171,8 +172,14 @@ final class TabViewController: UIViewController {
         collectionView.applySnapshot()
     }
     
-    private func updateOptionsTopConstraint(animated: Bool = true) {
-        self.optionsTopConstraint?.update(offset: self.optionsView.visible ? 0 : -self.optionsView.frame.height)
+    private func updateTopConstraints(animated: Bool = true) {
+        if optionsView.visible {
+            optionsTopContraint?.activate()
+            collectionTopConstraint?.deactivate()
+        } else {
+            optionsTopContraint?.deactivate()
+            collectionTopConstraint?.activate()
+        }
         
         guard animated else { return }
         
@@ -186,8 +193,9 @@ final class TabViewController: UIViewController {
         self.view.addSubview(optionsView)
         optionsView.snp.makeConstraints { make in
             make.leading.trailing.equalToSuperview()
-            optionsTopConstraint = make.top.equalToSuperview().constraint
+            optionsTopContraint = make.top.equalToSuperview().constraint
         }
+        optionsTopContraint?.deactivate()
     }
     
     private func setupCollectionView() {
@@ -210,8 +218,10 @@ final class TabViewController: UIViewController {
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { make in
             make.leading.trailing.bottom.equalToSuperview()
-            make.top.equalTo(optionsView.snp.bottom)
+            make.top.equalTo(optionsView.snp.bottom).priority(999)
+            collectionTopConstraint = make.top.equalToSuperview().constraint
         }
+        collectionTopConstraint?.deactivate()
         
         updateSource()
     }

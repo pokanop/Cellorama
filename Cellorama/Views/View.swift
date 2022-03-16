@@ -96,11 +96,19 @@ class View: UIView {
         
         applyCorner()
         applyShadow()
-        addSubview(label)
+        
+        let container = UIView()
+        container.layer.masksToBounds = true
+        container.addSubview(label)
         label.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         label.text = element.data
+        
+        addSubview(container)
+        container.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
         
         size.configure(self)
     }

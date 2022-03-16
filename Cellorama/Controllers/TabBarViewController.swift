@@ -12,19 +12,27 @@ final class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        optionsMap[.zone]?.size = .xlarge
+        optionsMap[.grid(0)]?.columns = 5
+        optionsMap[.carousel]?.size = .medium
+        optionsMap[.stack]?.size = .dynamic
+        optionsMap[.tab]?.size = .dynamic
+        
         let zonesController = TabViewController(style: .zone)
-        let gridController = TabViewController(style: .grid(2))
+        let gridController = TabViewController(style: .grid(5))
         let carouselController = TabViewController(style: .carousel)
         let stackController = TabViewController(style: .stack)
         let tabController = TabViewController(style: .tab)
 //        let mixedController = TabViewController(style: .mixed)
         
-        let tabs = [zonesController,
-                    gridController,
-                    carouselController,
-                    stackController,
-                    tabController]
-//                    mixedController]
+        let tabs = [
+            zonesController,
+            gridController,
+            carouselController,
+            stackController,
+            tabController,
+//            mixedController
+        ]
         let navs = tabs.map { UINavigationController(rootViewController: $0) }
         tabs.forEach { tab in
             tab.tabBarItem = UITabBarItem(title: tab.style.name,
@@ -32,7 +40,7 @@ final class TabBarViewController: UITabBarController {
                                           tag: 0)
         }
         
-        setViewControllers(navs, animated: true)
+        setViewControllers(navs, animated: false)
         delegate = self
         
         UITabBar.appearance().backgroundColor = .white
@@ -43,9 +51,6 @@ final class TabBarViewController: UITabBarController {
             nav.navigationBar.standardAppearance = appearance
             nav.navigationBar.scrollEdgeAppearance = appearance
         }
-        
-        optionsMap[.stack]?.size = .dynamic
-        optionsMap[.tab]?.size = .dynamic
     }
     
 }

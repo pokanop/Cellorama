@@ -109,7 +109,7 @@ private extension Container {
         return NSCollectionLayoutGroup.custom(layoutSize: groupSize) { layoutEnv in
             var items = [NSCollectionLayoutGroupCustomItem]()
             var yPos: CGFloat = 0
-            for index in  0..<self.items.count {
+            for index in 0..<self.items.count {
                 let frame = CGRect(x: 0, y: yPos,
                                    width: layoutEnv.container.contentSize.width - insets.left - insets.right,
                                    height: itemSize.height)
@@ -123,15 +123,25 @@ private extension Container {
     
     func tabLayoutGroup(with layoutEnv: NSCollectionLayoutEnvironment) -> NSCollectionLayoutGroup {
         let itemWidth = layoutEnv.container.contentSize.width - insets.left - insets.right
-        let itemHeight = CGFloat.random(in: 50...320)
+        let itemHeights = items.enumerated().filter { Int(CGFloat($0.offset) / CGFloat(items.count) * CGFloat(segmentCount)) == segmentIndex }.compactMap { $0.element.asElement?.heightInTab }
         
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                               heightDimension: .absolute(itemHeight))
+                                               heightDimension: .absolute(itemHeights.reduce(CGFloat(0), +)))
         
         return NSCollectionLayoutGroup.custom(layoutSize: groupSize) { env in
-            var items = [NSCollectionLayoutGroupCustomItem]()
-            for index in  0..<self.items.count {
-                let frame = index == self.asContainer?.selectedIndex ? CGRect(x: 0, y: 0, width: itemWidth, height: itemHeight) : .zero
+            var count: Int = 0
+            var yPos: CGFloat = 0
+            var items: [NSCollectionLayoutGroupCustomItem] = []
+            for index in 0..<self.items.count {
+                let frame: CGRect
+                if Int(CGFloat(index) / CGFloat(self.items.count) * CGFloat(self.segmentCount)) == self.segmentIndex {
+                    let height = itemHeights[count]
+                    frame = CGRect(x: 0, y: yPos, width: itemWidth, height: height - itemSpacing)
+                    yPos += height
+                    count += 1
+                } else {
+                    frame = .zero
+                }
                 let item = NSCollectionLayoutGroupCustomItem(frame: frame)
                 items.append(item)
             }

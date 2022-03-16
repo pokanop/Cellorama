@@ -64,6 +64,14 @@ extension CollectionSourceable {
         container.updateColumnCount(count)
     }
     
+    mutating func updateSegmentIndex(_ index: Int, for section: Int) {
+        guard var container = items[section].asContainer else { return }
+        
+        container.segmentIndex = index
+        items.remove(at: section)
+        items.insert(AnyItem(container), at: section)
+    }
+    
     mutating func randomize(_ animationType: AnimationType, transitionContainers: Bool = false) {
         container.randomize(animationType, transitionContainers: transitionContainers)
     }

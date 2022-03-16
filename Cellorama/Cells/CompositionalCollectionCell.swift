@@ -24,6 +24,7 @@ final class CompositionalCollectionCell: UICollectionViewCell, Reusable {
     
     func configure(viewController: ViewController) {
         guard let container = container,
+              let element = element,
               let containerViewController = containerViewController else { return }
         
         containerViewController.addChild(viewController)
